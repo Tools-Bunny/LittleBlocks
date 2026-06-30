@@ -512,10 +512,8 @@ function DashboardLayout({ user, handleLogout }) {
                 <h2 className="text-sm font-black text-indigo-700 uppercase">🛡️ Verification Queue</h2>
                 <p className="text-[10px] text-indigo-400 font-bold uppercase">Pending tasks needing your approval</p>
               </div>
-              {/* PERFORMANCE INSIGHTS */}
-{user && (
-  <PerformanceInsights tasks={tasks} />
-)}
+
+              
               <div className="flex flex-wrap gap-2">
                 {tasks.filter(t => t.done).map((task) => (
                   <button 
@@ -535,6 +533,11 @@ function DashboardLayout({ user, handleLogout }) {
               </div>
             </div>
           )}
+
+          {/* PERFORMANCE INSIGHTS */}
+{user && (
+  <PerformanceInsights tasks={tasks} />
+)}
           
           {/* REWARD SHOP */}
           {user && (
