@@ -7,7 +7,7 @@ const languagesDatabase = {
   English: { label: "🌐 English", title: "🎯 My Daily Badges", task1: "🌞 Rise & Shine (Brush)", task2: "📚 Brain Power (Homework)", task3: "🥛 Strong Bones (Milk time)", story: "The Clever Fox. Once upon a time, a clever fox saw a crow with a piece of cheese. The fox praised the crow's voice, and when the crow opened its beak to sing, the cheese fell down, and the fox happily ate it.", appreciation: "Superstar performance today! 🏆", langCode: 'en-US' },
   Hindi: { label: "🇮🇳 हिन्दी (Hindi)", title: "🎯 मेरे रोज़ के बैज", task1: "🌞 सुबह उठो aur brush karo", task2: "📚 दिमागी कसरत (होमवर्क)", task3: "🥛 मजबूत हड्डियां (दूध का समय)", story: "चतुर लोमड़ी की कहानी। एक बार एक लोमड़ी ने कौवे के पास पनीर देखा। उसने कौवे की मीठी आवाज़ की तारीफ की। जैसे ही कौवे ने गाने के लिए चोंच खोली, पनीर नीचे गिर गया और लोमड़ी उसे लेकर भाग गई।", appreciation: "आज आप सुपरस्टार बन गए! 🏆", langCode: 'hi-IN' },
   Vajjika: { label: "🇮🇳 बज्जिका (Vajjika)", title: "🎯 हम्मर रोज़ क बैज", task1: "🌞 सवेरे उठू आ मंजन करू", task2: "📚 दिमाग क कसरत (होमवर्क)", task3: "🥛 ताकतवर देह (दूध पीउ)", story: "चतुर सियार क कहानी। एक बेर एक सियार कौआ के पास पनीर देखलक। ऊ कौआ के बोली के बड़ाई करलक। जैसे ही कौआ गावे लेल चोंच खोललक, पनीर नीचे गिर गेल आ सियार ओकरा लेके भाग गेल।", appreciation: "आज तूं कमाल क देलऽ, बाबू! 🏆", langCode: 'hi-IN' },
-  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलक काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा लोमड़ी कौआक पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कएलक। जेना ही कौआ गाबay लेल चोंच खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओকরা ल क भागि गेल।", appreciation: "बड्ड सुंदर काज कएलह, बौआ! 🏆", langCode: 'hi-IN' },
+  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलक काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा लोमड़ी कौआক पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कएलक। जेना ही कौआ गाबay लेल चोंच खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओकरा ल क भागि गेल।", appreciation: "बड्ड सुंदर काज कएलह, बौआ! 🏆", langCode: 'hi-IN' },
   Bengali: { label: "🇮🇳 বাংলা (Bengali)", title: "🎯 আমার দৈনিক ব্যাজ", task1: "🌞 সকালের ম্যাজিক (ব্রাশ)", task2: "📚 মগজ ধোলাই (হোমওয়ার্ক)", task3: "🥛 শক্তিশালী হাড় (দুধের সময়)", story: "চতুর শেয়ালের গল্প। এক সময় এক চতুর শেয়াল একটা কাকের মুখে পনিরের টুকরো দেখল। শেয়ালটি কাকের গানের গলার প্রশংসা করল। কাকটি গান গাওয়ার জন্য মুখ খুলতেই পনিরটি নিচে পড়ে গেল এবং শেয়ালটি তা খেয়ে নিল।", appreciation: "আজ তুমি সত্যিকারের সুপারস্টার! 🏆", langCode: 'bn-IN' }
 };
 
@@ -17,6 +17,12 @@ const taskColors = [
   'bg-emerald-100 border-emerald-300',
   'bg-rose-100 border-rose-300',
   'bg-cyan-100 border-cyan-300'
+];
+
+const staticRewardsList = [
+  { id: 'r1', title: "📺 15 Mins Cartoon Time", cost: 1 },
+  { id: 'r2', title: "🍦 Yummy Ice Cream Treat", cost: 2 },
+  { id: 'r3', title: "🧸 Extra 30 Mins Playtime", cost: 3 }
 ];
 
 function DashboardLayout({ user, handleLogout }) {
@@ -32,13 +38,18 @@ function DashboardLayout({ user, handleLogout }) {
   const [activeKid, setActiveKid] = useState('Kid 1');
   const [newKidName, setNewKidName] = useState('');
 
-  // CUSTOM ROUTINE STATE
+  // TASKS & REWARDS STATE
   const [tasks, setTasks] = useState([]);
   const [customTaskText, setCustomTaskText] = useState('');
+  const [claimedRewards, setClaimedRewards] = useState([]);
 
-  // PROGRESS CALCULATIONS
+  // PROGRESS & STARS BALANCE CALCULATIONS
   const completedCount = tasks.filter(t => t.done).length;
   const progressPercentage = tasks.length > 0 ? Math.round((completedCount / tasks.length) * 100) : 0;
+  
+  const totalStarsEarned = completedCount;
+  const totalStarsSpent = claimedRewards.reduce((acc, r) => acc + r.stars_spent, 0);
+  const availableStars = Math.max(0, totalStarsEarned - totalStarsSpent);
 
   // AUDIO SPEECH RUNTIME
   const handleAudioPlayback = () => {
@@ -60,18 +71,17 @@ function DashboardLayout({ user, handleLogout }) {
     setIsPlaying(false);
   }, [selectedLang]);
 
-  // COMBINED ENGINE: FETCH TASKS AND PROGRESS STATUS FROM DATABASE
+  // COMBINED ENGINE: FETCH TASKS, PROGRESS AND REWARDS FROM BACKEND
   useEffect(() => {
     if (user) {
       const loadDashboardData = async () => {
-        // 1. Fetch baseline default + custom tasks created by parent
+        // 1. Fetch parent custom routine tasks
         const { data: customTasksData } = await supabase
           .from('parent_custom_tasks')
           .select('id, task_text, color_class')
           .eq('user_id', user.id)
           .eq('kid_name', activeKid);
 
-        // Build base tasks architecture
         let baseTasks = [
           { id: 'task1', text: content.task1, done: false, color: 'bg-amber-100 border-amber-300' },
           { id: 'task2', text: content.task2, done: false, color: 'bg-indigo-100 border-indigo-300' },
@@ -84,7 +94,7 @@ function DashboardLayout({ user, handleLogout }) {
           });
         }
 
-        // 2. Fetch completed completion markers
+        // 2. Fetch completed milestones
         const { data: progressData } = await supabase
           .from('tasks_progress')
           .select('task_num, done')
@@ -93,23 +103,31 @@ function DashboardLayout({ user, handleLogout }) {
 
         if (progressData) {
           baseTasks = baseTasks.map(bt => {
-            // Check matching id as string or conversion integer hash match
             const match = progressData.find(p => String(p.task_num) === String(bt.id));
             return match ? { ...bt, done: match.done } : bt;
           });
         }
-        
         setTasks(baseTasks);
+
+        // 3. Fetch claimed rewards ledger
+        const { data: rewardsData } = await supabase
+          .from('kids_rewards_claims')
+          .select('id, reward_title, stars_spent')
+          .eq('user_id', user.id)
+          .eq('kid_name', activeKid);
+
+        if (rewardsData) setClaimedRewards(rewardsData);
+        else setClaimedRewards([]);
       };
       
       loadDashboardData();
     } else {
-      // Offline fallback defaults layout
       setTasks([
         { id: 'task1', text: content.task1, done: false, color: 'bg-amber-100 border-amber-300' },
         { id: 'task2', text: content.task2, done: false, color: 'bg-indigo-100 border-indigo-300' },
         { id: 'task3', text: content.task3, done: false, color: 'bg-emerald-100 border-emerald-300' }
       ]);
+      setClaimedRewards([]);
     }
   }, [user, activeKid, selectedLang]);
 
@@ -123,18 +141,36 @@ function DashboardLayout({ user, handleLogout }) {
 
     const { data, error } = await supabase
       .from('parent_custom_tasks')
-      .insert({
-        user_id: user.id,
-        kid_name: activeKid,
-        task_text: taskString,
-        color_class: randomColor
-      })
-      .select()
-      .single();
+      .insert({ user_id: user.id, kid_name: activeKid, task_text: taskString, color_class: randomColor })
+      .select().single();
 
     if (data && !error) {
       setTasks(prev => [...prev, { id: data.id, text: data.task_text, done: false, color: data.color_class }]);
       setCustomTaskText('');
+    }
+  };
+
+  // REWARD REDEMPTION TRIGGER ENGINE
+  const handleClaimReward = async (reward) => {
+    if (!user) return;
+    if (availableStars < reward.cost) {
+      alert("Not enough stars yet! Complete more daily routines to unlock! 🚀");
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from('kids_rewards_claims')
+      .insert({
+        user_id: user.id,
+        kid_name: activeKid,
+        reward_title: reward.title,
+        stars_spent: reward.cost
+      })
+      .select().single();
+
+    if (data && !error) {
+      setClaimedRewards(prev => [...prev, data]);
+      alert(`Hurray! "${reward.title}" claimed successfully! 🎉 Enjoy your reward.`);
     }
   };
 
@@ -145,7 +181,6 @@ function DashboardLayout({ user, handleLogout }) {
     const newStatus = !currentStatus;
     setTasks(prev => prev.map(t => t.id === taskId ? { ...t, done: newStatus } : t));
 
-    // Dynamic numeric or textual identification tracking
     const { error } = await supabase
       .from('tasks_progress')
       .upsert(
@@ -154,7 +189,6 @@ function DashboardLayout({ user, handleLogout }) {
       );
 
     if (error) {
-      // Direct text mapping dynamic synchronization fallback if custom string uuid hash exists
       await supabase.from('tasks_progress').upsert({
         user_id: user.id, kid_name: activeKid, task_num: 99, done: newStatus, updated_at: new Date()
       });
@@ -263,22 +297,19 @@ function DashboardLayout({ user, handleLogout }) {
 
         <div className="max-w-4xl w-full mx-auto px-12 pt-10 pb-24">
           
-          <div className="w-full bg-gradient-to-r from-[#FF6B6B] via-[#FFD166] to-[#4ECDC4] h-32 rounded-3xl p-6 relative overflow-hidden shadow-md mb-8 flex items-center">
+          <div className="w-full bg-gradient-to-r from-[#FF6B6B] via-[#FFD166] to-[#4ECDC4] h-32 rounded-3xl p-6 relative overflow-hidden shadow-md mb-8 flex items-center justify-between">
             <div className="relative z-10 text-white">
               <span className="text-sm uppercase font-black tracking-widest bg-black/20 px-2 py-0.5 rounded-md">
                 ACTIVE MONITORING FOR: {activeKid.toUpperCase()}
               </span>
               <h2 className="text-2xl font-black mt-1">Make learning fun in your own language!</h2>
             </div>
-            <span className="text-6xl absolute right-6 animate-pulse">🦖</span>
-          </div>
-
-          <div className="flex flex-col items-center justify-center text-center mb-8">
-            <span className="text-5xl bg-white p-2 rounded-2xl border-2 border-gray-100 shadow-sm mb-2">🎯</span>
-            <h1 className="text-3xl font-black text-gray-800 tracking-tight">
-              {activeKid}'s Daily Adventure Space
-            </h1>
-            <p className="text-xs text-gray-400 font-bold mt-1">Click on task badges to mark them complete and earn digital stars!</p>
+            
+            {/* LIVE BANK STAR HIGHLIGHT BADGE */}
+            <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-2xl border-2 border-[#EADFC9] text-center shadow-md relative z-10 min-w-[90px]">
+              <span className="text-xs font-black text-indigo-600 uppercase tracking-widest block">💰 Star Wallet</span>
+              <span className="text-2xl font-black text-amber-500">⭐ {availableStars}</span>
+            </div>
           </div>
 
           {/* PARENT LOGIN BOX */}
@@ -286,8 +317,8 @@ function DashboardLayout({ user, handleLogout }) {
             <div className="max-w-md mx-auto bg-amber-50 border-2 border-dashed border-amber-300 p-6 rounded-3xl shadow-sm mb-8 text-center">
               <h3 className="text-base font-black text-gray-800 mb-2">👩‍👦 Parent Control Access</h3>
               <form className="flex flex-col gap-3 max-w-xs mx-auto">
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-2 border-gray-200 rounded-xl p-2 text-xs focus:outline-none" placeholder="mom@example.com" />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="border-2 border-gray-200 rounded-xl p-2 text-xs focus:outline-none" placeholder="••••••••" />
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-2 border-gray-200 rounded-xl p-2 text-xs" placeholder="mom@example.com" />
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="border-2 border-gray-200 rounded-xl p-2 text-xs" placeholder="••••••••" />
                 <div className="flex space-x-2">
                   <button onClick={handleLogin} disabled={loading} className="flex-1 bg-[#37352f] text-white font-bold p-2 rounded-xl text-xs">{loading ? '...' : 'Login'}</button>
                   <button onClick={handleSignUp} disabled={loading} className="flex-1 bg-[#4ECDC4] text-white font-bold p-2 rounded-xl text-xs">Sign Up</button>
@@ -309,22 +340,48 @@ function DashboardLayout({ user, handleLogout }) {
             </div>
           </div>
 
-          {/* PARENT SYSTEM: CUSTOM TASK CREATOR CONTAINER */}
+          {/* PARENT SYSTEM: CUSTOM TASK CREATOR */}
           {user && (
-            <div className="mb-8 p-5 bg-white border-2 border-[#EADFC9] rounded-3xl shadow-sm">
+            <div className="mb-6 p-5 bg-white border-2 border-[#EADFC9] rounded-3xl shadow-sm">
               <h4 className="text-xs font-black uppercase text-amber-600 tracking-wider mb-3">🛠️ Parent Control: Add Custom Routine Task</h4>
               <form onSubmit={handleCreateCustomTask} className="flex gap-3">
-                <input 
-                  type="text" 
-                  value={customTaskText} 
-                  onChange={(e) => setCustomTaskText(e.target.value)}
-                  placeholder="e.g., Drink water, Pack school bag, Clean toys..." 
-                  className="flex-1 border-2 border-gray-200 rounded-xl p-2.5 text-xs font-bold focus:outline-none focus:border-[#FF6B6B]"
-                />
-                <button type="submit" className="bg-[#FF6B6B] text-white font-black px-5 py-2.5 rounded-xl text-xs shadow-sm hover:bg-opacity-90 transition">
-                  Add Task +
-                </button>
+                <input type="text" value={customTaskText} onChange={(e) => setCustomTaskText(e.target.value)} placeholder="e.g., Drink water, Clean toys..." className="flex-1 border-2 border-gray-200 rounded-xl p-2.5 text-xs font-bold focus:outline-none" />
+                <button type="submit" className="bg-[#FF6B6B] text-white font-black px-5 py-2.5 rounded-xl text-xs">Add Task +</button>
               </form>
+            </div>
+          )}
+
+          {/* GAMIFIED REWARD STORE MODULE */}
+          {user && (
+            <div className="mb-8 p-5 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-3xl shadow-sm">
+              <h4 className="text-xs font-black uppercase text-indigo-600 tracking-wider mb-3">🎁 Kid's Reward Shop (Spend Stars Here!)</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {staticRewardsList.map((reward) => (
+                  <div key={reward.id} className="bg-white p-3 border-2 border-indigo-100 rounded-2xl flex flex-col justify-between items-center text-center shadow-sm">
+                    <span className="text-xs font-extrabold text-gray-800 mb-2">{reward.title}</span>
+                    <button 
+                      onClick={() => handleClaimReward(reward)}
+                      className={`w-full text-[10px] font-black py-1.5 px-3 rounded-xl border-2 transition-all ${availableStars >= reward.cost ? 'bg-indigo-500 text-white border-indigo-600 hover:scale-[1.03]' : 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'}`}
+                    >
+                      Buy for ⭐ {reward.cost}
+                    </button>
+                  </div>
+                ))}
+              </div>
+              
+              {/* HISTORICAL LEDGER CLAIMED ITEMS TRACK */}
+              {claimedRewards.length > 0 && (
+                <div className="mt-4 border-t border-indigo-200 pt-3">
+                  <span className="text-[10px] uppercase font-black text-gray-400 block mb-1">🎟️ Already Claimed Rewards Ledger:</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {claimedRewards.map((cr, idx) => (
+                      <span key={idx} className="text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded-lg">
+                        ✅ {cr.reward_title}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -339,7 +396,7 @@ function DashboardLayout({ user, handleLogout }) {
                   <div 
                     key={task.id} 
                     onClick={() => user && toggleTask(task.id, task.done)}
-                    className={`flex items-center justify-between p-3.5 border-2 rounded-2xl cursor-pointer transition-all hover:scale-[1.01] ${task.done ? 'bg-gray-50 border-gray-200 opacity-60' : `${task.color}`}`}
+                    className={`flex items-center justify-between p-3.5 border-2 rounded-2xl cursor-pointer transition-all ${task.done ? 'bg-gray-50 border-gray-200 opacity-60' : `${task.color}`}`}
                   >
                     <div className="flex items-center space-x-3">
                       <div className={`w-5 h-5 rounded-full border-2 ${task.done ? 'bg-emerald-500 border-emerald-600' : 'bg-white'}`}></div>
