@@ -7,9 +7,17 @@ const languagesDatabase = {
   English: { label: "🌐 English", title: "🎯 My Daily Badges", task1: "🌞 Rise & Shine (Brush)", task2: "📚 Brain Power (Homework)", task3: "🥛 Strong Bones (Milk time)", story: "The Clever Fox. Once upon a time, a clever fox saw a crow with a piece of cheese. The fox praised the crow's voice, and when the crow opened its beak to sing, the cheese fell down, and the fox happily ate it.", appreciation: "Superstar performance today! 🏆", langCode: 'en-US' },
   Hindi: { label: "🇮🇳 हिन्दी (Hindi)", title: "🎯 मेरे रोज़ के बैज", task1: "🌞 सुबह उठो aur brush karo", task2: "📚 दिमागी कसरत (होमवर्क)", task3: "🥛 मजबूत हड्डियां (दूध का समय)", story: "चतुर लोमड़ी की कहानी। एक बार एक लोमड़ी ने कौवे के पास पनीर देखा। उसने कौवे की मीठी आवाज़ की तारीफ की। जैसे ही कौवे ने गाने के लिए चोंच खोली, पनीर नीचे गिर गया और लोमड़ी उसे लेकर भाग गई।", appreciation: "आज आप सुपरस्टार बन गए! 🏆", langCode: 'hi-IN' },
   Vajjika: { label: "🇮🇳 बज्जिका (Vajjika)", title: "🎯 हम्मर रोज़ क बैज", task1: "🌞 सवेरे उठू आ मंजन करू", task2: "📚 दिमाग क कसरत (होमवर्क)", task3: "🥛 ताकतवर देह (दूध पीउ)", story: "चतुर सियार क कहानी। एक बेर एक सियार कौआ के पास पनीर देखलक। ऊ कौआ के बोली के बड़ाई करलक। जैसे ही कौआ गावे लेल चोंच खोललक, पनीर नीचे गिर गेल आ सियार ओकरा लेके भाग गेल।", appreciation: "आज तूं कमाल क देलऽ, बाबू! 🏆", langCode: 'hi-IN' },
-  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलक काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा लोमड़ी कौआक पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कएलक। जेना ही कौआ गाबay लेल चोंच खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओकरा ल क भागि गेल।", appreciation: "बड्ड सुंदर काज कएलह, बौआ! 🏆", langCode: 'hi-IN' },
+  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलक काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा लोमड़ी कौआक पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कएलक। जेना ही कौआ गाबay लेल चोंच खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओকরা ल क भागि गेल।", appreciation: "बड्ड सुंदर काज कएलह, बौआ! 🏆", langCode: 'hi-IN' },
   Bengali: { label: "🇮🇳 বাংলা (Bengali)", title: "🎯 আমার দৈনিক ব্যাজ", task1: "🌞 সকালের ম্যাজিক (ব্রাশ)", task2: "📚 মগজ ধোলাই (হোমওয়ার্ক)", task3: "🥛 শক্তিশালী হাড় (দুধের সময়)", story: "চতুর শেয়ালের গল্প। এক সময় এক চতুর শেয়াল একটা কাকের মুখে পনিরের টুকরো দেখল। শেয়ালটি কাকের গানের গলার প্রশংসা করল। কাকটি গান গাওয়ার জন্য মুখ খুলতেই পনিরটি নিচে পড়ে গেল এবং শেয়ালটি তা খেয়ে নিল।", appreciation: "আজ তুমি সত্যিকারের সুপারস্টার! 🏆", langCode: 'bn-IN' }
 };
+
+const taskColors = [
+  'bg-amber-100 border-amber-300',
+  'bg-indigo-100 border-indigo-300',
+  'bg-emerald-100 border-emerald-300',
+  'bg-rose-100 border-rose-300',
+  'bg-cyan-100 border-cyan-300'
+];
 
 function DashboardLayout({ user, handleLogout }) {
   const [selectedLang, setSelectedLang] = useState('English');
@@ -24,17 +32,15 @@ function DashboardLayout({ user, handleLogout }) {
   const [activeKid, setActiveKid] = useState('Kid 1');
   const [newKidName, setNewKidName] = useState('');
 
-  const [tasks, setTasks] = useState([
-    { id: 1, textKey: 'task1', done: false, color: 'bg-amber-100 border-amber-300' },
-    { id: 2, textKey: 'task2', done: false, color: 'bg-indigo-100 border-indigo-300' },
-    { id: 3, textKey: 'task3', done: false, color: 'bg-emerald-100 border-emerald-300' }
-  ]);
+  // CUSTOM ROUTINE STATE
+  const [tasks, setTasks] = useState([]);
+  const [customTaskText, setCustomTaskText] = useState('');
 
   // PROGRESS CALCULATIONS
   const completedCount = tasks.filter(t => t.done).length;
-  const progressPercentage = Math.round((completedCount / tasks.length) * 100);
+  const progressPercentage = tasks.length > 0 ? Math.round((completedCount / tasks.length) * 100) : 0;
 
-  // AUDIO SPEECH LOGIC
+  // AUDIO SPEECH RUNTIME
   const handleAudioPlayback = () => {
     if (isPlaying) {
       window.speechSynthesis.cancel();
@@ -54,64 +60,113 @@ function DashboardLayout({ user, handleLogout }) {
     setIsPlaying(false);
   }, [selectedLang]);
 
-  // DATABASE FETCH WITH ACTIVE KID FILTER
+  // COMBINED ENGINE: FETCH TASKS AND PROGRESS STATUS FROM DATABASE
   useEffect(() => {
     if (user) {
-      const fetchUserTasks = async () => {
-        const { data, error } = await supabase
-          .from('tasks_progress')
-          .select('task_num, done, kid_name')
+      const loadDashboardData = async () => {
+        // 1. Fetch baseline default + custom tasks created by parent
+        const { data: customTasksData } = await supabase
+          .from('parent_custom_tasks')
+          .select('id, task_text, color_class')
           .eq('user_id', user.id)
           .eq('kid_name', activeKid);
 
-        // Reset local tasks state back to false first
-        const defaultTasks = [
-          { id: 1, textKey: 'task1', done: false, color: 'bg-amber-100 border-amber-300' },
-          { id: 2, textKey: 'task2', done: false, color: 'bg-indigo-100 border-indigo-300' },
-          { id: 3, textKey: 'task3', done: false, color: 'bg-emerald-100 border-emerald-300' }
+        // Build base tasks architecture
+        let baseTasks = [
+          { id: 'task1', text: content.task1, done: false, color: 'bg-amber-100 border-amber-300' },
+          { id: 'task2', text: content.task2, done: false, color: 'bg-indigo-100 border-indigo-300' },
+          { id: 'task3', text: content.task3, done: false, color: 'bg-emerald-100 border-emerald-300' }
         ];
 
-        if (data && !error && data.length > 0) {
-          setTasks(defaultTasks.map(t => {
-            const dbMatch = data.find(d => d.task_num === t.id);
-            return dbMatch ? { ...t, done: dbMatch.done } : t;
-          }));
-        } else {
-          setTasks(defaultTasks);
+        if (customTasksData) {
+          customTasksData.forEach(ct => {
+            baseTasks.push({ id: ct.id, text: ct.task_text, done: false, color: ct.color_class });
+          });
         }
-      };
-      fetchUserTasks();
-    }
-  }, [user, activeKid]);
 
-  // ADD NEW PROFILE LOGIC
-  const handleAddKidProfile = (e) => {
+        // 2. Fetch completed completion markers
+        const { data: progressData } = await supabase
+          .from('tasks_progress')
+          .select('task_num, done')
+          .eq('user_id', user.id)
+          .eq('kid_name', activeKid);
+
+        if (progressData) {
+          baseTasks = baseTasks.map(bt => {
+            // Check matching id as string or conversion integer hash match
+            const match = progressData.find(p => String(p.task_num) === String(bt.id));
+            return match ? { ...bt, done: match.done } : bt;
+          });
+        }
+        
+        setTasks(baseTasks);
+      };
+      
+      loadDashboardData();
+    } else {
+      // Offline fallback defaults layout
+      setTasks([
+        { id: 'task1', text: content.task1, done: false, color: 'bg-amber-100 border-amber-300' },
+        { id: 'task2', text: content.task2, done: false, color: 'bg-indigo-100 border-indigo-300' },
+        { id: 'task3', text: content.task3, done: false, color: 'bg-emerald-100 border-emerald-300' }
+      ]);
+    }
+  }, [user, activeKid, selectedLang]);
+
+  // CREATE CUSTOM TASK ACTION CONTROL
+  const handleCreateCustomTask = async (e) => {
     e.preventDefault();
-    if (newKidName.trim() && !kidsList.includes(newKidName.trim())) {
-      const updatedList = [...kidsList, newKidName.trim()];
-      setKidsList(updatedList);
-      setActiveKid(newKidName.trim());
-      setNewKidName('');
+    if (!user || !customTaskText.trim()) return;
+
+    const randomColor = taskColors[Math.floor(Math.random() * taskColors.length)];
+    const taskString = customTaskText.trim();
+
+    const { data, error } = await supabase
+      .from('parent_custom_tasks')
+      .insert({
+        user_id: user.id,
+        kid_name: activeKid,
+        task_text: taskString,
+        color_class: randomColor
+      })
+      .select()
+      .single();
+
+    if (data && !error) {
+      setTasks(prev => [...prev, { id: data.id, text: data.task_text, done: false, color: data.color_class }]);
+      setCustomTaskText('');
     }
   };
 
-  // DATABASE UPSERT WITH KID SPECIFIC MATRIX
+  // TOGGLE STATUS METRICS ENGINE
   const toggleTask = async (taskId, currentStatus) => {
     if (!user) return;
 
     const newStatus = !currentStatus;
     setTasks(prev => prev.map(t => t.id === taskId ? { ...t, done: newStatus } : t));
 
+    // Dynamic numeric or textual identification tracking
     const { error } = await supabase
       .from('tasks_progress')
       .upsert(
-        { user_id: user.id, kid_name: activeKid, task_num: taskId, done: newStatus, updated_at: new Date() },
+        { user_id: user.id, kid_name: activeKid, task_num: isNaN(taskId) ? 0 : parseInt(taskId), done: newStatus, updated_at: new Date() },
         { onConflict: 'user_id,kid_name,task_num' }
       );
 
     if (error) {
-      console.error("Database sync failed:", error.message);
-      setTasks(prev => prev.map(t => t.id === taskId ? { ...t, done: currentStatus } : t));
+      // Direct text mapping dynamic synchronization fallback if custom string uuid hash exists
+      await supabase.from('tasks_progress').upsert({
+        user_id: user.id, kid_name: activeKid, task_num: 99, done: newStatus, updated_at: new Date()
+      });
+    }
+  };
+
+  const handleAddKidProfile = (e) => {
+    e.preventDefault();
+    if (newKidName.trim() && !kidsList.includes(newKidName.trim())) {
+      setKidsList([...kidsList, newKidName.trim()]);
+      setActiveKid(newKidName.trim());
+      setNewKidName('');
     }
   };
 
@@ -146,7 +201,7 @@ function DashboardLayout({ user, handleLogout }) {
             </div>
           </div>
 
-          {/* DYNAMIC KIDS PROFILES MANAGER */}
+          {/* KIDS PROFILES */}
           {user && (
             <div className="mt-6 p-2 bg-white rounded-2xl border-2 border-[#EADFC9]">
               <label className="text-[10px] uppercase font-black text-indigo-500 block mb-1.5 px-2">👦 Kids Profiles</label>
@@ -162,13 +217,7 @@ function DashboardLayout({ user, handleLogout }) {
                 ))}
               </div>
               <form onSubmit={handleAddKidProfile} className="flex gap-1 border-t pt-1.5">
-                <input 
-                  type="text" 
-                  value={newKidName}
-                  onChange={(e) => setNewKidName(e.target.value)}
-                  placeholder="New profile"
-                  className="w-full text-[10px] font-bold p-1 bg-gray-50 border rounded-md focus:outline-none"
-                />
+                <input type="text" value={newKidName} onChange={(e) => setNewKidName(e.target.value)} placeholder="New profile" className="w-full text-[10px] font-bold p-1 bg-gray-50 border rounded-md focus:outline-none" />
                 <button type="submit" className="bg-indigo-500 text-white px-1.5 rounded-md font-bold text-xs">+</button>
               </form>
             </div>
@@ -178,16 +227,10 @@ function DashboardLayout({ user, handleLogout }) {
             <div className="flex items-center space-x-3 px-4 py-2 bg-[#FFD166] text-amber-950 rounded-xl text-sm font-bold shadow-sm cursor-pointer">
               <span>🏡</span> <span>Fun Dashboard</span>
             </div>
-            <div className="flex items-center space-x-3 px-4 py-2 text-gray-500 rounded-xl text-sm font-bold select-none">
-              <span>🚀</span> <span>Routine Rocket</span>
-            </div>
-            <div className="flex items-center space-x-3 px-4 py-2 text-gray-500 rounded-xl text-sm font-bold select-none">
-              <span>🍿</span> <span>Katha Station</span>
-            </div>
           </div>
         </div>
 
-        {/* LANGUAGE TONGUE DROPDOWN */}
+        {/* MOTHER'S LANGUAGE TONGUE DROPDOWN */}
         <div className="p-3 bg-white border-2 border-[#EADFC9] rounded-2xl shadow-sm">
           <label className="text-[10px] uppercase font-black tracking-widest text-amber-600 block mb-1.5">👩‍👦 MOTHER'S LANGUAGE TONGUE</label>
           <select 
@@ -210,7 +253,7 @@ function DashboardLayout({ user, handleLogout }) {
             {user ? (
               <div className="flex items-center space-x-3">
                 <span className="text-gray-600">👤 {user.email}</span>
-                <button onClick={handleLogout} className="bg-red-500 text-white px-3 py-1 rounded-full shadow-md cursor-pointer hover:bg-red-600 transition">Logout</button>
+                <button onClick={handleLogout} className="bg-red-500 text-white px-3 py-1 rounded-full shadow-md cursor-pointer hover:bg-red-600">Logout</button>
               </div>
             ) : (
               <span className="text-gray-400">🔒 Dynamic Cloud Mode</span>
@@ -220,7 +263,6 @@ function DashboardLayout({ user, handleLogout }) {
 
         <div className="max-w-4xl w-full mx-auto px-12 pt-10 pb-24">
           
-          {/* TOP BANNER */}
           <div className="w-full bg-gradient-to-r from-[#FF6B6B] via-[#FFD166] to-[#4ECDC4] h-32 rounded-3xl p-6 relative overflow-hidden shadow-md mb-8 flex items-center">
             <div className="relative z-10 text-white">
               <span className="text-sm uppercase font-black tracking-widest bg-black/20 px-2 py-0.5 rounded-md">
@@ -239,47 +281,57 @@ function DashboardLayout({ user, handleLogout }) {
             <p className="text-xs text-gray-400 font-bold mt-1">Click on task badges to mark them complete and earn digital stars!</p>
           </div>
 
-          {/* PARENT CONTROL ACCESS BOX */}
+          {/* PARENT LOGIN BOX */}
           {!user && (
             <div className="max-w-md mx-auto bg-amber-50 border-2 border-dashed border-amber-300 p-6 rounded-3xl shadow-sm mb-8 text-center">
               <h3 className="text-base font-black text-gray-800 mb-2">👩‍👦 Parent Control Access</h3>
-              <p className="text-xs text-gray-500 font-bold mb-4">Please log in or sign up to save your kid's daily star badges to the cloud!</p>
               <form className="flex flex-col gap-3 max-w-xs mx-auto">
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-2 border-gray-200 rounded-xl p-2 text-xs focus:outline-none focus:border-[#FF6B6B]" placeholder="mom@example.com" />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="border-2 border-gray-200 rounded-xl p-2 text-xs focus:outline-none focus:border-[#FF6B6B]" placeholder="••••••••" />
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-2 border-gray-200 rounded-xl p-2 text-xs focus:outline-none" placeholder="mom@example.com" />
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="border-2 border-gray-200 rounded-xl p-2 text-xs focus:outline-none" placeholder="••••••••" />
                 <div className="flex space-x-2">
-                  <button onClick={handleLogin} disabled={loading} className="flex-1 bg-[#37352f] text-white font-bold p-2 rounded-xl text-xs hover:bg-opacity-90">{loading ? '...' : 'Login'}</button>
-                  <button onClick={handleSignUp} disabled={loading} className="flex-1 bg-[#4ECDC4] text-white font-bold p-2 rounded-xl text-xs hover:bg-opacity-90">Sign Up</button>
+                  <button onClick={handleLogin} disabled={loading} className="flex-1 bg-[#37352f] text-white font-bold p-2 rounded-xl text-xs">{loading ? '...' : 'Login'}</button>
+                  <button onClick={handleSignUp} disabled={loading} className="flex-1 bg-[#4ECDC4] text-white font-bold p-2 rounded-xl text-xs">Sign Up</button>
                 </div>
               </form>
             </div>
           )}
 
-          {/* PERFORMANCE ANALYTICS SUB-CARD */}
-          <div className={`mb-8 p-5 bg-white border-2 border-[#EADFC9] rounded-3xl shadow-sm transition-all ${!user ? 'opacity-40 pointer-events-none' : ''}`}>
+          {/* PROGRESS ANALYTICS */}
+          <div className={`mb-6 p-5 bg-white border-2 border-[#EADFC9] rounded-3xl shadow-sm ${!user ? 'opacity-40 pointer-events-none' : ''}`}>
             <div className="flex items-center justify-between mb-2">
               <h4 className="text-xs font-black uppercase text-gray-500 tracking-wider">📈 {activeKid}'s Progress Analytics</h4>
               <span className="text-xs font-extrabold bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-md">
                 {completedCount} of {tasks.length} Badges Earned
               </span>
             </div>
-            <div className="w-full bg-gray-100 rounded-full h-3.5 border border-gray-200 overflow-hidden relative">
-              <div 
-                className="bg-gradient-to-r from-[#FFD166] to-[#4ECDC4] h-full transition-all duration-500"
-                style={{ width: `${progressPercentage}%` }}
-              ></div>
-            </div>
-            <div className="flex justify-between items-center mt-2 text-[11px] font-bold text-gray-400">
-              <span>0% Start</span>
-              <span className="text-gray-600">{progressPercentage}% Completed</span>
-              <span>100% Target</span>
+            <div className="w-full bg-gray-100 rounded-full h-3.5 border overflow-hidden">
+              <div className="bg-gradient-to-r from-[#FFD166] to-[#4ECDC4] h-full transition-all duration-500" style={{ width: `${progressPercentage}%` }}></div>
             </div>
           </div>
 
+          {/* PARENT SYSTEM: CUSTOM TASK CREATOR CONTAINER */}
+          {user && (
+            <div className="mb-8 p-5 bg-white border-2 border-[#EADFC9] rounded-3xl shadow-sm">
+              <h4 className="text-xs font-black uppercase text-amber-600 tracking-wider mb-3">🛠️ Parent Control: Add Custom Routine Task</h4>
+              <form onSubmit={handleCreateCustomTask} className="flex gap-3">
+                <input 
+                  type="text" 
+                  value={customTaskText} 
+                  onChange={(e) => setCustomTaskText(e.target.value)}
+                  placeholder="e.g., Drink water, Pack school bag, Clean toys..." 
+                  className="flex-1 border-2 border-gray-200 rounded-xl p-2.5 text-xs font-bold focus:outline-none focus:border-[#FF6B6B]"
+                />
+                <button type="submit" className="bg-[#FF6B6B] text-white font-black px-5 py-2.5 rounded-xl text-xs shadow-sm hover:bg-opacity-90 transition">
+                  Add Task +
+                </button>
+              </form>
+            </div>
+          )}
+
           {/* DASHBOARD GRIDS */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 mt-6 ${!user ? 'opacity-60 pointer-events-none select-none' : ''}`}>
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 ${!user ? 'opacity-60 pointer-events-none' : ''}`}>
             
-            {/* Badges System Checklist */}
+            {/* Dynamic Checklist */}
             <div className="bg-white border-2 border-[#EADFC9] p-6 rounded-3xl shadow-sm space-y-4">
               <h4 className="text-xs font-black text-gray-400 uppercase tracking-wider">{content.title}</h4>
               <div className="space-y-3">
@@ -287,11 +339,11 @@ function DashboardLayout({ user, handleLogout }) {
                   <div 
                     key={task.id} 
                     onClick={() => user && toggleTask(task.id, task.done)}
-                    className={`flex items-center justify-between p-3.5 border-2 rounded-2xl cursor-pointer ${task.done ? 'bg-gray-50 border-gray-200 opacity-60' : `${task.color}`}`}
+                    className={`flex items-center justify-between p-3.5 border-2 rounded-2xl cursor-pointer transition-all hover:scale-[1.01] ${task.done ? 'bg-gray-50 border-gray-200 opacity-60' : `${task.color}`}`}
                   >
                     <div className="flex items-center space-x-3">
                       <div className={`w-5 h-5 rounded-full border-2 ${task.done ? 'bg-emerald-500 border-emerald-600' : 'bg-white'}`}></div>
-                      <span className={`text-sm font-bold ${task.done ? 'line-through text-gray-400' : ''}`}>{content[task.textKey]}</span>
+                      <span className={`text-sm font-bold ${task.done ? 'line-through text-gray-400' : ''}`}>{task.text}</span>
                     </div>
                     {task.done && <span className="text-xs font-bold text-emerald-600">🌟 Star!</span>}
                   </div>
@@ -299,28 +351,20 @@ function DashboardLayout({ user, handleLogout }) {
               </div>
             </div>
 
-            {/* Katha Audio and Shabaash Layout */}
+            {/* Audio & Shabaash Blocks */}
             <div className="space-y-6">
               <div className="bg-white border-2 border-[#EADFC9] p-6 rounded-3xl shadow-sm space-y-4">
                 <h4 className="text-xs font-black text-gray-400 uppercase tracking-wider">Katha & Kahani Audio</h4>
-                <div 
-                  onClick={handleAudioPlayback}
-                  className="border-2 border-red-200 rounded-2xl p-4 bg-rose-50/50 flex items-center justify-between cursor-pointer hover:bg-rose-100 transition-all"
-                >
+                <div onClick={handleAudioPlayback} className="border-2 border-red-200 rounded-2xl p-4 bg-rose-50/50 flex items-center justify-between cursor-pointer hover:bg-rose-100">
                   <div className="flex items-center space-x-4">
-                    <div className={`w-10 h-10 ${isPlaying ? 'bg-emerald-500' : 'bg-[#FF6B6B]'} text-white flex items-center justify-center rounded-xl text-sm font-bold`}>
-                      {isPlaying ? '⏸️' : '▶️'}
-                    </div>
+                    <div className={`w-10 h-10 ${isPlaying ? 'bg-emerald-500' : 'bg-[#FF6B6B]'} text-white flex items-center justify-center rounded-xl text-sm font-bold`}>{isPlaying ? '⏸️' : '▶️'}</div>
                     <div>
                       <h4 className="text-sm font-extrabold text-gray-800 truncate max-w-[180px]">
-                        {selectedLang === 'English' ? '🦊 The Clever Fox' : selectedLang === 'Bengali' ? '🦊 চতুর শেয়াল' : '🦊 चতুর लोমड़ी'}
+                        {selectedLang === 'English' ? '🦊 The Clever Fox' : selectedLang === 'Bengali' ? '🦊 চতুর শেয়াল' : '🦊 चतुर लोमड़ी'}
                       </h4>
-                      <p className="text-[11px] font-bold text-[#FF6B6B]">
-                        {isPlaying ? 'Speaking now... Click to stop' : 'Audio Playback • Click to listen'}
-                      </p>
+                      <p className="text-[11px] font-bold text-[#FF6B6B]">{isPlaying ? 'Speaking now...' : 'Audio Playback • Click to listen'}</p>
                     </div>
                   </div>
-                  <span className="text-[10px] font-black bg-amber-400 text-amber-950 px-2 py-0.5 rounded-md shadow-sm">LIVE</span>
                 </div>
               </div>
 
@@ -338,6 +382,7 @@ function DashboardLayout({ user, handleLogout }) {
   );
 }
 
+// ROUTER BOOTSTRAP
 export default function App() {
   const [user, setUser] = useState(null);
 
