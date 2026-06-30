@@ -6,8 +6,8 @@ import { supabase } from './supabaseClient';
 const languagesDatabase = {
   English: { label: "🌐 English", title: "🎯 My Daily Badges", task1: "🌞 Rise & Shine (Brush)", task2: "📚 Brain Power (Homework)", task3: "🥛 Strong Bones (Milk time)", story: "The Clever Fox. Once upon a time, a clever fox saw a crow with a piece of cheese. The fox praised the crow's voice, and when the crow opened its beak to sing, the cheese fell down, and the fox happily ate it.", appreciation: "Superstar performance today! 🏆", langCode: 'en-US' },
   Hindi: { label: "🇮🇳 हिन्दी (Hindi)", title: "🎯 मेरे रोज़ के बैज", task1: "🌞 सुबह उठो aur brush karo", task2: "📚 दिमागी कसरत (होमवर्क)", task3: "🥛 मजबूत हड्डियां (दूध का समय)", story: "चतुर लोमड़ी की कहानी। एक बार एक लोमड़ी ने कौवे के पास पनीर देखा। उसने कौवे की मीठी आवाज़ की तारीफ की। जैसे ही कौवे ने गाने के लिए चोंच खोली, पनीर नीचे गिर गया और लोमड़ी उसे लेकर भाग गई।", appreciation: "आज आप सुपरस्टार बन गए! 🏆", langCode: 'hi-IN' },
-  Vajjika: { label: "🇮🇳 बज्जিকা (Vajjika)", title: "🎯 हम्मर रोज़ क बैज", task1: "🌞 सवेरे उठू आ मंजन करू", task2: "📚 दिमाग क कसरत (होमवर्क)", task3: "🥛 ताकतवर देह (दूध पीउ)", story: "चतुर सियार क कहानी। एक बेर एक siyar कौआ के पास पनीर देखलक। ऊ कौआ के बोली के बड़ाई करलक। जैसे ही कौआ गावे लेल चोंच खोललक, पनीर नीचे गिर गेल आ सियार ओकरा लेके भाग गेल।", appreciation: "आज तूं कमाल क देलऽ, बाबू! 🏆", langCode: 'hi-IN' },
-  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलক काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा लोमड़ी कौआक पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कэлহ। जेना ही कौआ गाबय लेल चोंচ खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओকরা ल क भागि गेल।", appreciation: "बड्ड सुंदर काज कэлহ, बौआ! 🏆", langCode: 'hi-IN' },
+  Vajjika: { label: "🇮🇳 बज्जिका (Vajjika)", title: "🎯 हम्मर रोज़ क बैज", task1: "🌞 सवेरे उठू आ मंजन करू", task2: "📚 दिमाग क कसरत (होमवर्क)", task3: "🥛 ताकतवर देह (दूध पीउ)", story: "चतुर सियार क कहानी। एक बेर एक सियार कौआ के पास पनीर देखलक। ऊ कौआ के बोली के बड़ाई करलक। जैसे ही कौआ गावे लेल चोंच खोललक, पनीर नीचे गिर गेल आ सियार ओकरा लेके भाग गेल।", appreciation: "आज तूं कमाल क देलऽ, बाबू! 🏆", langCode: 'hi-IN' },
+  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलक काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा लोमड़ी कौआक पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कएलक। जेना ही कौआ गाबay लेल चोंच खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओकरा ल क भागि गेल।", appreciation: "बड्ड सुंदर काज कएलह, बौआ! 🏆", langCode: 'hi-IN' },
   Bengali: { label: "🇮🇳 বাংলা (Bengali)", title: "🎯 আমার দৈনিক ব্যাজ", task1: "🌞 সকালের ম্যাজিক (ব্রাশ)", task2: "📚 মগজ ধোলাই (হোমওয়ার্ক)", task3: "🥛 শক্তিশালী হাড় (দুধের সময়)", story: "চতুর শেয়ালের গল্প। এক সময় এক চতুর শেয়াল একটা কাকের মুখে পনিরের টুকরো দেখল। শেয়ালটি কাকের গানের গলার প্রশংসা করল। কাকটি গান গাওয়ার জন্য মুখ খুলতেই পনিরটি নিচে পড়ে গেল এবং শেয়ালটি তা খেয়ে নিল।", appreciation: "আজ তুমি সত্যিকারের সুপারস্টার! 🏆", langCode: 'bn-IN' }
 };
 
@@ -19,17 +19,22 @@ function DashboardLayout({ user, handleLogout }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const content = languagesDatabase[selectedLang] || languagesDatabase['English'];
 
+  // MULTI-KID PROFILES STATE
+  const [kidsList, setKidsList] = useState(['Kid 1', 'Kid 2']);
+  const [activeKid, setActiveKid] = useState('Kid 1');
+  const [newKidName, setNewKidName] = useState('');
+
   const [tasks, setTasks] = useState([
     { id: 1, textKey: 'task1', done: false, color: 'bg-amber-100 border-amber-300' },
     { id: 2, textKey: 'task2', done: false, color: 'bg-indigo-100 border-indigo-300' },
     { id: 3, textKey: 'task3', done: false, color: 'bg-emerald-100 border-emerald-300' }
   ]);
 
-  // ANALYTICS CALCULATION METRICS
+  // PROGRESS CALCULATIONS
   const completedCount = tasks.filter(t => t.done).length;
   const progressPercentage = Math.round((completedCount / tasks.length) * 100);
 
-  // AUDIO PLAYBACK MANAGEMENT
+  // AUDIO SPEECH LOGIC
   const handleAudioPlayback = () => {
     if (isPlaying) {
       window.speechSynthesis.cancel();
@@ -49,29 +54,48 @@ function DashboardLayout({ user, handleLogout }) {
     setIsPlaying(false);
   }, [selectedLang]);
 
-  // DATABASE FETCH
+  // DATABASE FETCH WITH ACTIVE KID FILTER
   useEffect(() => {
     if (user) {
       const fetchUserTasks = async () => {
         const { data, error } = await supabase
           .from('tasks_progress')
-          .select('task_num, done')
-          .eq('user_id', user.id);
+          .select('task_num, done, kid_name')
+          .eq('user_id', user.id)
+          .eq('kid_name', activeKid);
 
-        if (data && !error) {
-          setTasks(prevTasks => 
-            prevTasks.map(t => {
-              const dbMatch = data.find(d => d.task_num === t.id);
-              return dbMatch ? { ...t, done: dbMatch.done } : t;
-            })
-          );
+        // Reset local tasks state back to false first
+        const defaultTasks = [
+          { id: 1, textKey: 'task1', done: false, color: 'bg-amber-100 border-amber-300' },
+          { id: 2, textKey: 'task2', done: false, color: 'bg-indigo-100 border-indigo-300' },
+          { id: 3, textKey: 'task3', done: false, color: 'bg-emerald-100 border-emerald-300' }
+        ];
+
+        if (data && !error && data.length > 0) {
+          setTasks(defaultTasks.map(t => {
+            const dbMatch = data.find(d => d.task_num === t.id);
+            return dbMatch ? { ...t, done: dbMatch.done } : t;
+          }));
+        } else {
+          setTasks(defaultTasks);
         }
       };
       fetchUserTasks();
     }
-  }, [user]);
+  }, [user, activeKid]);
 
-  // DATABASE UPSERT
+  // ADD NEW PROFILE LOGIC
+  const handleAddKidProfile = (e) => {
+    e.preventDefault();
+    if (newKidName.trim() && !kidsList.includes(newKidName.trim())) {
+      const updatedList = [...kidsList, newKidName.trim()];
+      setKidsList(updatedList);
+      setActiveKid(newKidName.trim());
+      setNewKidName('');
+    }
+  };
+
+  // DATABASE UPSERT WITH KID SPECIFIC MATRIX
   const toggleTask = async (taskId, currentStatus) => {
     if (!user) return;
 
@@ -81,8 +105,8 @@ function DashboardLayout({ user, handleLogout }) {
     const { error } = await supabase
       .from('tasks_progress')
       .upsert(
-        { user_id: user.id, task_num: taskId, done: newStatus, updated_at: new Date() },
-        { onConflict: 'user_id,task_num' }
+        { user_id: user.id, kid_name: activeKid, task_num: taskId, done: newStatus, updated_at: new Date() },
+        { onConflict: 'user_id,kid_name,task_num' }
       );
 
     if (error) {
@@ -122,23 +146,48 @@ function DashboardLayout({ user, handleLogout }) {
             </div>
           </div>
 
-          <div className="mt-8 space-y-2">
-            <div className="flex items-center space-x-3 px-4 py-2.5 bg-[#FFD166] text-amber-950 rounded-xl text-sm font-bold shadow-sm cursor-pointer">
+          {/* DYNAMIC KIDS PROFILES MANAGER */}
+          {user && (
+            <div className="mt-6 p-2 bg-white rounded-2xl border-2 border-[#EADFC9]">
+              <label className="text-[10px] uppercase font-black text-indigo-500 block mb-1.5 px-2">👦 Kids Profiles</label>
+              <div className="flex flex-wrap gap-1 mb-2 max-h-24 overflow-y-auto p-1">
+                {kidsList.map((kid) => (
+                  <button 
+                    key={kid}
+                    onClick={() => setActiveKid(kid)}
+                    className={`text-[11px] font-black px-2 py-1 rounded-lg border transition-all truncate max-w-[90px] ${activeKid === kid ? 'bg-indigo-500 text-white border-indigo-600 shadow-sm' : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100'}`}
+                  >
+                    {kid}
+                  </button>
+                ))}
+              </div>
+              <form onSubmit={handleAddKidProfile} className="flex gap-1 border-t pt-1.5">
+                <input 
+                  type="text" 
+                  value={newKidName}
+                  onChange={(e) => setNewKidName(e.target.value)}
+                  placeholder="New profile"
+                  className="w-full text-[10px] font-bold p-1 bg-gray-50 border rounded-md focus:outline-none"
+                />
+                <button type="submit" className="bg-indigo-500 text-white px-1.5 rounded-md font-bold text-xs">+</button>
+              </form>
+            </div>
+          )}
+
+          <div className="mt-4 space-y-1">
+            <div className="flex items-center space-x-3 px-4 py-2 bg-[#FFD166] text-amber-950 rounded-xl text-sm font-bold shadow-sm cursor-pointer">
               <span>🏡</span> <span>Fun Dashboard</span>
             </div>
-            <div className="flex items-center space-x-3 px-4 py-2.5 text-gray-500 rounded-xl text-sm font-bold select-none">
+            <div className="flex items-center space-x-3 px-4 py-2 text-gray-500 rounded-xl text-sm font-bold select-none">
               <span>🚀</span> <span>Routine Rocket</span>
             </div>
-            <div className="flex items-center space-x-3 px-4 py-2.5 text-gray-500 rounded-xl text-sm font-bold select-none">
+            <div className="flex items-center space-x-3 px-4 py-2 text-gray-500 rounded-xl text-sm font-bold select-none">
               <span>🍿</span> <span>Katha Station</span>
-            </div>
-            <div className="flex items-center space-x-3 px-4 py-2.5 text-gray-500 rounded-xl text-sm font-bold select-none">
-              <span>🎨</span> <span>Bhasha Playground</span>
             </div>
           </div>
         </div>
 
-        {/* MOTHER'S LANGUAGE TONGUE DROPDOWN */}
+        {/* LANGUAGE TONGUE DROPDOWN */}
         <div className="p-3 bg-white border-2 border-[#EADFC9] rounded-2xl shadow-sm">
           <label className="text-[10px] uppercase font-black tracking-widest text-amber-600 block mb-1.5">👩‍👦 MOTHER'S LANGUAGE TONGUE</label>
           <select 
@@ -174,7 +223,9 @@ function DashboardLayout({ user, handleLogout }) {
           {/* TOP BANNER */}
           <div className="w-full bg-gradient-to-r from-[#FF6B6B] via-[#FFD166] to-[#4ECDC4] h-32 rounded-3xl p-6 relative overflow-hidden shadow-md mb-8 flex items-center">
             <div className="relative z-10 text-white">
-              <span className="text-sm uppercase font-black tracking-widest bg-black/20 px-2 py-0.5 rounded-md">WELCOME KIDS & SUPER-MOMS!</span>
+              <span className="text-sm uppercase font-black tracking-widest bg-black/20 px-2 py-0.5 rounded-md">
+                ACTIVE MONITORING FOR: {activeKid.toUpperCase()}
+              </span>
               <h2 className="text-2xl font-black mt-1">Make learning fun in your own language!</h2>
             </div>
             <span className="text-6xl absolute right-6 animate-pulse">🦖</span>
@@ -182,7 +233,9 @@ function DashboardLayout({ user, handleLogout }) {
 
           <div className="flex flex-col items-center justify-center text-center mb-8">
             <span className="text-5xl bg-white p-2 rounded-2xl border-2 border-gray-100 shadow-sm mb-2">🎯</span>
-            <h1 className="text-3xl font-black text-gray-800 tracking-tight">My Daily Adventure Space</h1>
+            <h1 className="text-3xl font-black text-gray-800 tracking-tight">
+              {activeKid}'s Daily Adventure Space
+            </h1>
             <p className="text-xs text-gray-400 font-bold mt-1">Click on task badges to mark them complete and earn digital stars!</p>
           </div>
 
@@ -202,16 +255,14 @@ function DashboardLayout({ user, handleLogout }) {
             </div>
           )}
 
-          {/* LIVE GROWTH ANALYTICS SUB-CARD (Always updates live dynamically based on checklist stars) */}
+          {/* PERFORMANCE ANALYTICS SUB-CARD */}
           <div className={`mb-8 p-5 bg-white border-2 border-[#EADFC9] rounded-3xl shadow-sm transition-all ${!user ? 'opacity-40 pointer-events-none' : ''}`}>
             <div className="flex items-center justify-between mb-2">
-              <h4 className="text-xs font-black uppercase text-gray-500 tracking-wider">📈 Today's Performance Analytics</h4>
+              <h4 className="text-xs font-black uppercase text-gray-500 tracking-wider">📈 {activeKid}'s Progress Analytics</h4>
               <span className="text-xs font-extrabold bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-md">
                 {completedCount} of {tasks.length} Badges Earned
               </span>
             </div>
-            
-            {/* Custom Interactive Progress Metric Bar */}
             <div className="w-full bg-gray-100 rounded-full h-3.5 border border-gray-200 overflow-hidden relative">
               <div 
                 className="bg-gradient-to-r from-[#FFD166] to-[#4ECDC4] h-full transition-all duration-500"
@@ -262,7 +313,7 @@ function DashboardLayout({ user, handleLogout }) {
                     </div>
                     <div>
                       <h4 className="text-sm font-extrabold text-gray-800 truncate max-w-[180px]">
-                        {selectedLang === 'English' ? '🦊 The Clever Fox' : selectedLang === 'Bengali' ? '🦊 চতুর শেয়াল' : '🦊 चতুর लोमड़ी'}
+                        {selectedLang === 'English' ? '🦊 The Clever Fox' : selectedLang === 'Bengali' ? '🦊 চতুর শেয়াল' : '🦊 चতুর लोমड़ी'}
                       </h4>
                       <p className="text-[11px] font-bold text-[#FF6B6B]">
                         {isPlaying ? 'Speaking now... Click to stop' : 'Audio Playback • Click to listen'}
