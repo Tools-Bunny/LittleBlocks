@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { supabase } from './supabaseClient';
 
-// ALL REGIONAL INDIAN LANGUAGES RESTORED
+// ALL REGIONAL INDIAN LANGUAGES DATA
 const languagesDatabase = {
   English: { label: "🌐 English", title: "🎯 My Daily Badges", task1: "🌞 Rise & Shine (Brush)", task2: "📚 Brain Power (Homework)", task3: "🥛 Strong Bones (Milk time)", story: "🦊 The Clever Fox", appreciation: "Superstar performance today! 🏆" },
   Hindi: { label: "🇮🇳 हिन्दी (Hindi)", title: "🎯 मेरे रोज़ के बैज", task1: "🌞 सुबह उठो aur brush karo", task2: "📚 दिमागी कसरत (होमवर्क)", task3: "🥛 मजबूत हड्डियां (दूध का समय)", story: "🦊 चतुर लोमड़ी की कहानी", appreciation: "आज आप सुपरस्टार बन गए! 🏆" },
@@ -23,6 +23,52 @@ function DashboardLayout({ user, handleLogout }) {
     { id: 2, textKey: 'task2', done: false, color: 'bg-indigo-100 border-indigo-300' },
     { id: 3, textKey: 'task3', done: false, color: 'bg-emerald-100 border-emerald-300' }
   ]);
+
+  // 1. DATABASE SE PURANA SAVED DATA FETCH KARNA
+  useEffect(() => {
+    if (user) {
+      const fetchUserTasks = async () => {
+        const { data, error } = await supabase
+          .from('tasks_progress')
+          .select('task_num, done')
+          .eq('user_id', user.id);
+
+        if (data && !error) {
+          setTasks(prevTasks => 
+            prevTasks.map(t => {
+              const dbMatch = data.find(d => d.task_num === t.id);
+              return dbMatch ? { ...t, done: dbMatch.done } : t;
+            })
+          );
+        }
+      };
+      fetchUserTasks();
+    }
+  }, [user]);
+
+  // 2. CLICK KARNE PAR REAL-TIME DATABASE ME SAVE/UPSERT KARNA
+  const toggleTask = async (taskId, currentStatus) => {
+    if (!user) return;
+
+    const newStatus = !currentStatus;
+    
+    // Local UI update first for speed
+    setTasks(prev => prev.map(t => t.id === taskId ? { ...t, done: newStatus } : t));
+
+    // Upsert payload to Supabase Database table
+    const { error } = await supabase
+      .from('tasks_progress')
+      .upsert(
+        { user_id: user.id, task_num: taskId, done: newStatus, updated_at: new Date() },
+        { onConflict: 'user_id,task_num' }
+      );
+
+    if (error) {
+      console.error("Database sync failed:", error.message);
+      // Rollback on failure
+      setTasks(prev => prev.map(t => t.id === taskId ? { ...t, done: currentStatus } : t));
+    }
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -71,7 +117,7 @@ function DashboardLayout({ user, handleLogout }) {
           </div>
         </div>
 
-        {/* MOTHER'S LANGUAGE TONGUE */}
+        {/* MOTHER'S LANGUAGE TONGUE DROPDOWN */}
         <div className="p-3 bg-white border-2 border-[#EADFC9] rounded-2xl shadow-sm">
           <label className="text-[10px] uppercase font-black tracking-widest text-amber-600 block mb-1.5">👩‍👦 MOTHER'S LANGUAGE TONGUE</label>
           <select 
@@ -119,7 +165,7 @@ function DashboardLayout({ user, handleLogout }) {
             <p className="text-xs text-gray-400 font-bold mt-1">Click on task badges to mark them complete and earn digital stars!</p>
           </div>
 
-          {/* PARENT GATEWAY BOX */}
+          {/* PARENT CONTROL ACCESS BOX */}
           {!user && (
             <div className="max-w-md mx-auto bg-amber-50 border-2 border-dashed border-amber-300 p-6 rounded-3xl shadow-sm mb-8 text-center">
               <h3 className="text-base font-black text-gray-800 mb-2">👩‍👦 Parent Control Access</h3>
@@ -135,16 +181,17 @@ function DashboardLayout({ user, handleLogout }) {
             </div>
           )}
 
-          {/* DASHBOARD COMPONENT MATRIX */}
+          {/* DASHBOARD GRIDS */}
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 mt-6 ${!user ? 'opacity-60 pointer-events-none select-none' : ''}`}>
-            {/* Badges system */}
+            
+            {/* Badges System Checklist */}
             <div className="bg-white border-2 border-[#EADFC9] p-6 rounded-3xl shadow-sm space-y-4">
               <h4 className="text-xs font-black text-gray-400 uppercase tracking-wider">{content.title}</h4>
               <div className="space-y-3">
                 {tasks.map((task) => (
                   <div 
                     key={task.id} 
-                    onClick={() => user && setTasks(tasks.map(t => t.id === task.id ? { ...t, done: !t.done } : t))}
+                    onClick={() => user && toggleTask(task.id, task.done)}
                     className={`flex items-center justify-between p-3.5 border-2 rounded-2xl cursor-pointer ${task.done ? 'bg-gray-50 border-gray-200 opacity-60' : `${task.color}`}`}
                   >
                     <div className="flex items-center space-x-3">
@@ -157,7 +204,7 @@ function DashboardLayout({ user, handleLogout }) {
               </div>
             </div>
 
-            {/* Katha and Shabaash Block */}
+            {/* Katha Audio and Shabaash Layout */}
             <div className="space-y-6">
               <div className="bg-white border-2 border-[#EADFC9] p-6 rounded-3xl shadow-sm space-y-4">
                 <h4 className="text-xs font-black text-gray-400 uppercase tracking-wider">Katha & Kahani Audio</h4>
@@ -178,6 +225,7 @@ function DashboardLayout({ user, handleLogout }) {
                 <p className="text-base italic text-amber-950 font-extrabold mt-2">"{content.appreciation}"</p>
               </div>
             </div>
+
           </div>
 
         </div>
@@ -186,6 +234,7 @@ function DashboardLayout({ user, handleLogout }) {
   );
 }
 
+// ROOT APPLICATION ROUTER BLOCK
 export default function App() {
   const [user, setUser] = useState(null);
 
