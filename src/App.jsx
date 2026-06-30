@@ -6,8 +6,8 @@ import { supabase } from './supabaseClient';
 const languagesDatabase = {
   English: { label: "🌐 English", title: "🎯 My Daily Badges", task1: "🌞 Rise & Shine (Brush)", task2: "📚 Brain Power (Homework)", task3: "🥛 Strong Bones (Milk time)", story: "The Clever Fox. Once upon a time, a clever fox saw a crow with a piece of cheese. The fox praised the crow's voice, and when the crow opened its beak to sing, the cheese fell down, and the fox happily ate it.", appreciation: "Superstar performance today! 🏆", langCode: 'en-US' },
   Hindi: { label: "🇮🇳 हिन्दी (Hindi)", title: "🎯 मेरे रोज़ के बैज", task1: "🌞 सुबह उठो aur brush karo", task2: "📚 दिमागी कसरत (होमवर्क)", task3: "🥛 मजबूत हड्डियां (दूध का समय)", story: "चतुर लोमड़ी की कहानी। एक बार एक लोमड़ी ने कौवे के पास पनीर देखा। उसने कौवे की मीठी आवाज़ की तारीफ की। जैसे ही कौवे ने गाने के लिए चोंच खोली, पनीर नीचे गिर गया और लोमड़ी उसे लेकर भाग गई।", appreciation: "आज आप सुपरस्टार बन गए! 🏆", langCode: 'hi-IN' },
-  Vajjika: { label: "🇮🇳 बज्जिका (Vajjika)", title: "🎯 हम्मर रोज़ क बैज", task1: "🌞 सवेरे उठू आ मंजन करू", task2: "📚 दिमाग क कसरत (होमवर्क)", task3: "🥛 ताकतवर देह (दूध पीउ)", story: "चतुर सियार क कहानी। एक बेर एक सियार कौआ के पास पनीर देखलक। ऊ कौआ के बोली के बड़ाई करलक। जैसे ही कौआ गावे लेल चोंच खोललक, पनीर नीचे गिर गेल आ सियार ओकरा लेके भाग गेल।", appreciation: "आज तूं कमाल क देलऽ, बाबू! 🏆", langCode: 'hi-IN' },
-  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलक काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा लोमड़ी कौआक पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कएलक। जेना ही कौआ गाबय लेल चोंच खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओकरा ल क भागि गेल।", appreciation: "बड्ड सुंदर काज कएलह, बौआ! 🏆", langCode: 'hi-IN' },
+  Vajjika: { label: "🇮🇳 बज्जিকা (Vajjika)", title: "🎯 हम्मर रोज़ क बैज", task1: "🌞 सवेरे उठू आ मंजन करू", task2: "📚 दिमाग क कसरत (होमवर्क)", task3: "🥛 ताकतवर देह (दूध पीउ)", story: "चतुर सियार क कहानी। एक बेर एक siyar कौआ के पास पनीर देखलक। ऊ कौआ के बोली के बड़ाई करलक। जैसे ही कौआ गावे लेल चोंच खोललक, पनीर नीचे गिर गेल आ सियार ओकरा लेके भाग गेल।", appreciation: "आज तूं कमाल क देलऽ, बाबू! 🏆", langCode: 'hi-IN' },
+  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलক काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा लोमड़ी कौआक पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कэлহ। जेना ही कौआ गाबय लेल चोंচ खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओকরা ल क भागि गेल।", appreciation: "बड्ड सुंदर काज कэлহ, बौआ! 🏆", langCode: 'hi-IN' },
   Bengali: { label: "🇮🇳 বাংলা (Bengali)", title: "🎯 আমার দৈনিক ব্যাজ", task1: "🌞 সকালের ম্যাজিক (ব্রাশ)", task2: "📚 মগজ ধোলাই (হোমওয়ার্ক)", task3: "🥛 শক্তিশালী হাড় (দুধের সময়)", story: "চতুর শেয়ালের গল্প। এক সময় এক চতুর শেয়াল একটা কাকের মুখে পনিরের টুকরো দেখল। শেয়ালটি কাকের গানের গলার প্রশংসা করল। কাকটি গান গাওয়ার জন্য মুখ খুলতেই পনিরটি নিচে পড়ে গেল এবং শেয়ালটি তা খেয়ে নিল।", appreciation: "আজ তুমি সত্যিকারের সুপারস্টার! 🏆", langCode: 'bn-IN' }
 };
 
@@ -25,7 +25,11 @@ function DashboardLayout({ user, handleLogout }) {
     { id: 3, textKey: 'task3', done: false, color: 'bg-emerald-100 border-emerald-300' }
   ]);
 
-  // AUDIO PLAYBACK MANAGEMENT FUNCTION
+  // ANALYTICS CALCULATION METRICS
+  const completedCount = tasks.filter(t => t.done).length;
+  const progressPercentage = Math.round((completedCount / tasks.length) * 100);
+
+  // AUDIO PLAYBACK MANAGEMENT
   const handleAudioPlayback = () => {
     if (isPlaying) {
       window.speechSynthesis.cancel();
@@ -33,21 +37,13 @@ function DashboardLayout({ user, handleLogout }) {
     } else {
       const utterance = new SpeechSynthesisUtterance(content.story);
       utterance.lang = content.langCode;
-      
-      utterance.onend = () => {
-        setIsPlaying(false);
-      };
-      
-      utterance.onerror = () => {
-        setIsPlaying(false);
-      };
-
+      utterance.onend = () => setIsPlaying(false);
+      utterance.onerror = () => setIsPlaying(false);
       setIsPlaying(true);
       window.speechSynthesis.speak(utterance);
     }
   };
 
-  // Stop audio if user changes language mid-way
   useEffect(() => {
     window.speechSynthesis.cancel();
     setIsPlaying(false);
@@ -206,6 +202,29 @@ function DashboardLayout({ user, handleLogout }) {
             </div>
           )}
 
+          {/* LIVE GROWTH ANALYTICS SUB-CARD (Always updates live dynamically based on checklist stars) */}
+          <div className={`mb-8 p-5 bg-white border-2 border-[#EADFC9] rounded-3xl shadow-sm transition-all ${!user ? 'opacity-40 pointer-events-none' : ''}`}>
+            <div className="flex items-center justify-between mb-2">
+              <h4 className="text-xs font-black uppercase text-gray-500 tracking-wider">📈 Today's Performance Analytics</h4>
+              <span className="text-xs font-extrabold bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-md">
+                {completedCount} of {tasks.length} Badges Earned
+              </span>
+            </div>
+            
+            {/* Custom Interactive Progress Metric Bar */}
+            <div className="w-full bg-gray-100 rounded-full h-3.5 border border-gray-200 overflow-hidden relative">
+              <div 
+                className="bg-gradient-to-r from-[#FFD166] to-[#4ECDC4] h-full transition-all duration-500"
+                style={{ width: `${progressPercentage}%` }}
+              ></div>
+            </div>
+            <div className="flex justify-between items-center mt-2 text-[11px] font-bold text-gray-400">
+              <span>0% Start</span>
+              <span className="text-gray-600">{progressPercentage}% Completed</span>
+              <span>100% Target</span>
+            </div>
+          </div>
+
           {/* DASHBOARD GRIDS */}
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 mt-6 ${!user ? 'opacity-60 pointer-events-none select-none' : ''}`}>
             
@@ -243,7 +262,7 @@ function DashboardLayout({ user, handleLogout }) {
                     </div>
                     <div>
                       <h4 className="text-sm font-extrabold text-gray-800 truncate max-w-[180px]">
-                        {selectedLang === 'English' ? '🦊 The Clever Fox' : selectedLang === 'Bengali' ? '🦊 চতুর শেয়াল' : '🦊 चतुर लोमड़ी'}
+                        {selectedLang === 'English' ? '🦊 The Clever Fox' : selectedLang === 'Bengali' ? '🦊 চতুর শেয়াল' : '🦊 चতুর लोमड़ी'}
                       </h4>
                       <p className="text-[11px] font-bold text-[#FF6B6B]">
                         {isPlaying ? 'Speaking now... Click to stop' : 'Audio Playback • Click to listen'}
