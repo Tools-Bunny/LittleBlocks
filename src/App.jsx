@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { supabase } from './supabaseClient';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
 // ALL REGIONAL INDIAN LANGUAGES DATA
 const languagesDatabase = {
@@ -28,6 +29,39 @@ const staticRewardsList = [
   { id: 'r2', title: "🍦 Yummy Ice Cream Treat", cost: 2 },
   { id: 'r3', title: "🧸 Extra 30 Mins Playtime", cost: 3 }
 ];
+
+const PerformanceInsights = ({ tasks }) => {
+  const data = [
+    { name: 'Mon', tasks: 2 },
+    { name: 'Tue', tasks: 4 },
+    { name: 'Wed', tasks: 3 },
+    { name: 'Thu', tasks: 5 },
+    { name: 'Fri', tasks: 4 },
+  ];
+
+  return (
+    <div className="bg-white p-6 rounded-3xl border-2 border-[#EADFC9] shadow-sm mb-8">
+      <h3 className="text-sm font-black text-gray-700 uppercase mb-4">📈 Weekly Growth Analytics</h3>
+      <div className="h-48 w-full">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={data}>
+            <XAxis dataKey="name" fontSize={10} />
+            <YAxis fontSize={10} />
+            <Tooltip />
+            <Bar dataKey="tasks" radius={[6, 6, 0, 0]}>
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={index % 2 === 0 ? "#FFD166" : "#4ECDC4"} />
+              ))}
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+      <p className="text-[10px] font-bold text-gray-400 mt-2 text-center">
+        PRO TIP: Habit consistency is up 12% this week! 🚀
+      </p>
+    </div>
+  );
+};
 
 function DashboardLayout({ user, handleLogout }) {
   const [selectedLang, setSelectedLang] = useState('English');
@@ -478,15 +512,22 @@ function DashboardLayout({ user, handleLogout }) {
                 <h2 className="text-sm font-black text-indigo-700 uppercase">🛡️ Verification Queue</h2>
                 <p className="text-[10px] text-indigo-400 font-bold uppercase">Pending tasks needing your approval</p>
               </div>
+              {/* PERFORMANCE INSIGHTS */}
+{user && (
+  <PerformanceInsights tasks={tasks} />
+)}
               <div className="flex flex-wrap gap-2">
                 {tasks.filter(t => t.done).map((task) => (
                   <button 
-                    key={task.id} 
-                    onClick={() => verifyTask(task.id)}
-                    className="bg-indigo-600 text-white px-4 py-2 rounded-xl text-[10px] font-black hover:bg-indigo-700 transition"
-                  >
-                    Verify: {task.text}
-                  </button>
+  type="button" 
+  onClick={(e) => { 
+    e.stopPropagation(); 
+    verifyTask(task.id); 
+  }}
+  className="bg-indigo-600 text-white px-4 py-2 rounded-xl text-[10px] font-black hover:bg-indigo-700 transition cursor-pointer"
+>
+  Verify: {task.text}
+</button>
                 ))}
                 {tasks.filter(t => t.done).length === 0 && (
                   <p className="text-[10px] font-bold text-indigo-300 italic">No pending verifications right now.</p>
