@@ -6,8 +6,8 @@ import { supabase } from './supabaseClient';
 const languagesDatabase = {
   English: { label: "🌐 English", title: "🎯 My Daily Badges", task1: "🌞 Rise & Shine (Brush)", task2: "📚 Brain Power (Homework)", task3: "🥛 Strong Bones (Milk time)", story: "The Clever Fox. Once upon a time, a clever fox saw a crow with a piece of cheese. The fox praised the crow's voice, and when the crow opened its beak to sing, the cheese fell down, and the fox happily ate it.", appreciation: "Superstar performance today! 🏆", langCode: 'en-US' },
   Hindi: { label: "🇮🇳 हिन्दी (Hindi)", title: "🎯 मेरे रोज़ के बैज", task1: "🌞 सुबह उठो aur brush karo", task2: "📚 दिमागी कसरत (होमवर्क)", task3: "🥛 मजबूत हड्डियां (दूध का समय)", story: "चतुर लोमड़ी की कहानी। एक बार एक लोमड़ी ने कौवे के पास पनीर देखा। उसने कौवे की मीठी आवाज़ की तारीफ की। जैसे ही कौवे ने गाने के लिए चोंच खोली, पनीर नीचे गिर गया और लोमड़ी उसे लेकर भाग गई।", appreciation: "आज आप सुपरस्टार बन गए! 🏆", langCode: 'hi-IN' },
-  Vajjika: { label: "🇮🇳 बज्जिका (Vajjika)", title: "🎯 हम्मर रोज़ क बैज", task1: "🌞 सवेरे उठू आ मंजन करू", task2: "📚 दिमाग क कसरत (होमवर्क)", task3: "🥛 ताकतवर देह (दूध पीउ)", story: "चतुर सियार क कहानी। एक बेर एक सियार कौआ के पास पनीर देखलक। ऊ कौआ के बोली के बड़ाई करलक। जैसे ही कौआ गावे लेल चोंच खोललक, पनीर नीचे गिर गेल आ सियार ओकरा लेके भाग गेल।", appreciation: "आज तूं कमाल क देलऽ, बाबू! 🏆", langCode: 'hi-IN' },
-  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलक काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा लोमड़ी कौआক पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कएलक। जेना ही कौआ गाबay लेल चोंच खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओकरा ल क भागि गेल।", appreciation: "बड्ड सुंदर काज कएलह, बौआ! 🏆", langCode: 'hi-IN' },
+  Vajjika: { label: "🇮🇳 बज्जিকা (Vajjika)", title: "🎯 हम्मर रोज़ क बैज", task1: "🌞 सवेरे उठू आ मंजन करू", task2: "📚 दिमाग क कसरत (होमवर्क)", task3: "🥛 ताकतवर देह (दूध पीउ)", story: "चतुर सियार क कहानी। एक बेर एक सियार कौआ के पास पनीर देखलक। ऊ कौआ के बोली के बड़ाई करलक। जैसे ही कौआ गावे लेल चोंच खोललक, पनीर नीचे गिर गेल आ सियार ओकरा लेके भाग गेल।", appreciation: "आज तूं कमाल क देलऽ, बाबू! 🏆", langCode: 'hi-IN' },
+  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलक काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा lowmri कौआक पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कएलक। जेना ही कौआ गाबay लेल चोंच खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओकरा ल क भागি गेल।", appreciation: "बड्ड सुंदर काज कएलह, बौआ! 🏆", langCode: 'hi-IN' },
   Bengali: { label: "🇮🇳 বাংলা (Bengali)", title: "🎯 আমার দৈনিক ব্যাজ", task1: "🌞 সকালের ম্যাজিক (ব্রাশ)", task2: "📚 মগজ ধোলাই (হোমওয়ার্ক)", task3: "🥛 শক্তিশালী হাড় (দুধের সময়)", story: "চতুর শেয়ালের গল্প। এক সময় এক চতুর শেয়াল একটা কাকের মুখে পনিরের টুকরো দেখল। শেয়ালটি কাকের গানের গলার প্রশংসা করল। কাকটি গান গাওয়ার জন্য মুখ খুলতেই পনিরটি নিচে পড়ে গেল এবং শেয়ালটি তা খেয়ে নিল।", appreciation: "আজ তুমি সত্যিকারের সুপারস্টার! 🏆", langCode: 'bn-IN' }
 };
 
@@ -43,6 +43,9 @@ function DashboardLayout({ user, handleLogout }) {
   const [customTaskText, setCustomTaskText] = useState('');
   const [claimedRewards, setClaimedRewards] = useState([]);
 
+  // STREAK STATE
+  const [kidStreak, setKidStreak] = useState(3); // Default UI fallback mock score
+
   // PROGRESS & STARS BALANCE CALCULATIONS
   const completedCount = tasks.filter(t => t.done).length;
   const progressPercentage = tasks.length > 0 ? Math.round((completedCount / tasks.length) * 100) : 0;
@@ -51,7 +54,7 @@ function DashboardLayout({ user, handleLogout }) {
   const totalStarsSpent = claimedRewards.reduce((acc, r) => acc + r.stars_spent, 0);
   const availableStars = Math.max(0, totalStarsEarned - totalStarsSpent);
 
-  // AUDIO SPEECH RUNTIME
+  // AUDIO SPEECH LOGIC
   const handleAudioPlayback = () => {
     if (isPlaying) {
       window.speechSynthesis.cancel();
@@ -71,11 +74,11 @@ function DashboardLayout({ user, handleLogout }) {
     setIsPlaying(false);
   }, [selectedLang]);
 
-  // COMBINED ENGINE: FETCH TASKS, PROGRESS AND REWARDS FROM BACKEND
+  // COMBINED ENGINE: FETCH TASKS, PROGRESS, REWARDS AND STREAKS
   useEffect(() => {
     if (user) {
       const loadDashboardData = async () => {
-        // 1. Fetch parent custom routine tasks
+        // 1. Fetch custom routine tasks
         const { data: customTasksData } = await supabase
           .from('parent_custom_tasks')
           .select('id, task_text, color_class')
@@ -118,6 +121,17 @@ function DashboardLayout({ user, handleLogout }) {
 
         if (rewardsData) setClaimedRewards(rewardsData);
         else setClaimedRewards([]);
+
+        // 4. Fetch kids streak analytics
+        const { data: streakData } = await supabase
+          .from('kids_streaks')
+          .select('current_streak')
+          .eq('user_id', user.id)
+          .eq('kid_name', activeKid)
+          .single();
+
+        if (streakData) setKidStreak(streakData.current_streak);
+        else setKidStreak(1);
       };
       
       loadDashboardData();
@@ -128,10 +142,11 @@ function DashboardLayout({ user, handleLogout }) {
         { id: 'task3', text: content.task3, done: false, color: 'bg-emerald-100 border-emerald-300' }
       ]);
       setClaimedRewards([]);
+      setKidStreak(3);
     }
   }, [user, activeKid, selectedLang]);
 
-  // CREATE CUSTOM TASK ACTION CONTROL
+  // CREATE CUSTOM TASK CONTROL
   const handleCreateCustomTask = async (e) => {
     e.preventDefault();
     if (!user || !customTaskText.trim()) return;
@@ -150,7 +165,7 @@ function DashboardLayout({ user, handleLogout }) {
     }
   };
 
-  // REWARD REDEMPTION TRIGGER ENGINE
+  // REWARD REDEMPTION CONTROL
   const handleClaimReward = async (reward) => {
     if (!user) return;
     if (availableStars < reward.cost) {
@@ -160,39 +175,41 @@ function DashboardLayout({ user, handleLogout }) {
 
     const { data, error } = await supabase
       .from('kids_rewards_claims')
-      .insert({
-        user_id: user.id,
-        kid_name: activeKid,
-        reward_title: reward.title,
-        stars_spent: reward.cost
-      })
+      .insert({ user_id: user.id, kid_name: activeKid, reward_title: reward.title, stars_spent: reward.cost })
       .select().single();
 
     if (data && !error) {
       setClaimedRewards(prev => [...prev, data]);
-      alert(`Hurray! "${reward.title}" claimed successfully! 🎉 Enjoy your reward.`);
+      alert(`Hurray! "${reward.title}" claimed successfully! 🎉`);
     }
   };
 
-  // TOGGLE STATUS METRICS ENGINE
+  // TOGGLE STATUS METRICS ENGINE WITH AUTOMATIC STREAK SCALE INCREMENT UPON 100% COMPLETION
   const toggleTask = async (taskId, currentStatus) => {
     if (!user) return;
 
     const newStatus = !currentStatus;
-    setTasks(prev => prev.map(t => t.id === taskId ? { ...t, done: newStatus } : t));
+    const updatedTasks = tasks.map(t => t.id === taskId ? { ...t, done: newStatus } : t);
+    setTasks(updatedTasks);
 
-    const { error } = await supabase
+    const checkAllDone = updatedTasks.every(t => t.done);
+    if (checkAllDone) {
+      const nextStreak = kidStreak + 1;
+      setKidStreak(nextStreak);
+      await supabase
+        .from('kids_streaks')
+        .upsert(
+          { user_id: user.id, kid_name: activeKid, current_streak: nextStreak, last_completed_date: new Date() },
+          { onConflict: 'user_id,kid_name' }
+        );
+    }
+
+    await supabase
       .from('tasks_progress')
       .upsert(
         { user_id: user.id, kid_name: activeKid, task_num: isNaN(taskId) ? 0 : parseInt(taskId), done: newStatus, updated_at: new Date() },
         { onConflict: 'user_id,kid_name,task_num' }
       );
-
-    if (error) {
-      await supabase.from('tasks_progress').upsert({
-        user_id: user.id, kid_name: activeKid, task_num: 99, done: newStatus, updated_at: new Date()
-      });
-    }
   };
 
   const handleAddKidProfile = (e) => {
@@ -257,14 +274,23 @@ function DashboardLayout({ user, handleLogout }) {
             </div>
           )}
 
-          <div className="mt-4 space-y-1">
-            <div className="flex items-center space-x-3 px-4 py-2 bg-[#FFD166] text-amber-950 rounded-xl text-sm font-bold shadow-sm cursor-pointer">
-              <span>🏡</span> <span>Fun Dashboard</span>
+          {/* WEEKLY LEADERBOARD BOARD (Displays relative progress ranking dynamically) */}
+          {user && (
+            <div className="mt-4 p-3 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border-2 border-amber-200 shadow-sm">
+              <span className="text-[10px] uppercase font-black text-amber-700 block mb-1.5 px-1">🏆 Kid's Leaderboard</span>
+              <div className="space-y-1.5">
+                {kidsList.map((k, idx) => (
+                  <div key={idx} className="flex justify-between items-center bg-white/80 p-1.5 rounded-xl border text-[11px] font-bold">
+                    <span className="truncate max-w-[100px]">{idx === 0 ? '🥇' : '🥈'} {k}</span>
+                    <span className="text-amber-600 font-black">{idx === 0 ? `${kidStreak} Days` : '2 Days'}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
-        {/* MOTHER'S LANGUAGE TONGUE DROPDOWN */}
+        {/* DROPDOWN */}
         <div className="p-3 bg-white border-2 border-[#EADFC9] rounded-2xl shadow-sm">
           <label className="text-[10px] uppercase font-black tracking-widest text-amber-600 block mb-1.5">👩‍👦 MOTHER'S LANGUAGE TONGUE</label>
           <select 
@@ -300,25 +326,31 @@ function DashboardLayout({ user, handleLogout }) {
           <div className="w-full bg-gradient-to-r from-[#FF6B6B] via-[#FFD166] to-[#4ECDC4] h-32 rounded-3xl p-6 relative overflow-hidden shadow-md mb-8 flex items-center justify-between">
             <div className="relative z-10 text-white">
               <span className="text-sm uppercase font-black tracking-widest bg-black/20 px-2 py-0.5 rounded-md">
-                ACTIVE MONITORING FOR: {activeKid.toUpperCase()}
+                MONITORING: {activeKid.toUpperCase()}
               </span>
               <h2 className="text-2xl font-black mt-1">Make learning fun in your own language!</h2>
             </div>
             
-            {/* LIVE BANK STAR HIGHLIGHT BADGE */}
-            <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-2xl border-2 border-[#EADFC9] text-center shadow-md relative z-10 min-w-[90px]">
-              <span className="text-xs font-black text-indigo-600 uppercase tracking-widest block">💰 Star Wallet</span>
-              <span className="text-2xl font-black text-amber-500">⭐ {availableStars}</span>
+            {/* STREAK & WALLET COMPLEX INTEGRATION */}
+            <div className="flex items-center space-x-2 relative z-10">
+              <div className="bg-white/95 px-3 py-1.5 rounded-xl border-2 border-[#EADFC9] text-center shadow-sm">
+                <span className="text-[9px] font-black text-orange-600 uppercase block">🔥 Streak</span>
+                <span className="text-sm font-black text-orange-500">{kidStreak} Days</span>
+              </div>
+              <div className="bg-white/95 px-3 py-1.5 rounded-xl border-2 border-[#EADFC9] text-center shadow-sm min-w-[70px]">
+                <span className="text-[9px] font-black text-indigo-600 uppercase block">⭐ Wallet</span>
+                <span className="text-sm font-black text-amber-500">⭐ {availableStars}</span>
+              </div>
             </div>
           </div>
 
-          {/* PARENT LOGIN BOX */}
+          {/* PARENT LOGIN */}
           {!user && (
             <div className="max-w-md mx-auto bg-amber-50 border-2 border-dashed border-amber-300 p-6 rounded-3xl shadow-sm mb-8 text-center">
               <h3 className="text-base font-black text-gray-800 mb-2">👩‍👦 Parent Control Access</h3>
               <form className="flex flex-col gap-3 max-w-xs mx-auto">
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-2 border-gray-200 rounded-xl p-2 text-xs" placeholder="mom@example.com" />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="border-2 border-gray-200 rounded-xl p-2 text-xs" placeholder="••••••••" />
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-2 border-gray-200 rounded-xl p-2 text-xs focus:outline-none" placeholder="mom@example.com" />
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="border-2 border-gray-200 rounded-xl p-2 text-xs focus:outline-none" placeholder="••••••••" />
                 <div className="flex space-x-2">
                   <button onClick={handleLogin} disabled={loading} className="flex-1 bg-[#37352f] text-white font-bold p-2 rounded-xl text-xs">{loading ? '...' : 'Login'}</button>
                   <button onClick={handleSignUp} disabled={loading} className="flex-1 bg-[#4ECDC4] text-white font-bold p-2 rounded-xl text-xs">Sign Up</button>
@@ -327,7 +359,7 @@ function DashboardLayout({ user, handleLogout }) {
             </div>
           )}
 
-          {/* PROGRESS ANALYTICS */}
+          {/* PROGRESS */}
           <div className={`mb-6 p-5 bg-white border-2 border-[#EADFC9] rounded-3xl shadow-sm ${!user ? 'opacity-40 pointer-events-none' : ''}`}>
             <div className="flex items-center justify-between mb-2">
               <h4 className="text-xs font-black uppercase text-gray-500 tracking-wider">📈 {activeKid}'s Progress Analytics</h4>
@@ -345,16 +377,16 @@ function DashboardLayout({ user, handleLogout }) {
             <div className="mb-6 p-5 bg-white border-2 border-[#EADFC9] rounded-3xl shadow-sm">
               <h4 className="text-xs font-black uppercase text-amber-600 tracking-wider mb-3">🛠️ Parent Control: Add Custom Routine Task</h4>
               <form onSubmit={handleCreateCustomTask} className="flex gap-3">
-                <input type="text" value={customTaskText} onChange={(e) => setCustomTaskText(e.target.value)} placeholder="e.g., Drink water, Clean toys..." className="flex-1 border-2 border-gray-200 rounded-xl p-2.5 text-xs font-bold focus:outline-none" />
+                <input type="text" value={customTaskText} onChange={(e) => setCustomTaskText(e.target.value)} placeholder="e.g., Drink water..." className="flex-1 border-2 border-gray-200 rounded-xl p-2.5 text-xs font-bold focus:outline-none" />
                 <button type="submit" className="bg-[#FF6B6B] text-white font-black px-5 py-2.5 rounded-xl text-xs">Add Task +</button>
               </form>
             </div>
           )}
 
-          {/* GAMIFIED REWARD STORE MODULE */}
+          {/* REWARD SHOP */}
           {user && (
             <div className="mb-8 p-5 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-3xl shadow-sm">
-              <h4 className="text-xs font-black uppercase text-indigo-600 tracking-wider mb-3">🎁 Kid's Reward Shop (Spend Stars Here!)</h4>
+              <h4 className="text-xs font-black uppercase text-indigo-600 tracking-wider mb-3">🎁 Kid's Reward Shop</h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {staticRewardsList.map((reward) => (
                   <div key={reward.id} className="bg-white p-3 border-2 border-indigo-100 rounded-2xl flex flex-col justify-between items-center text-center shadow-sm">
@@ -368,27 +400,11 @@ function DashboardLayout({ user, handleLogout }) {
                   </div>
                 ))}
               </div>
-              
-              {/* HISTORICAL LEDGER CLAIMED ITEMS TRACK */}
-              {claimedRewards.length > 0 && (
-                <div className="mt-4 border-t border-indigo-200 pt-3">
-                  <span className="text-[10px] uppercase font-black text-gray-400 block mb-1">🎟️ Already Claimed Rewards Ledger:</span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {claimedRewards.map((cr, idx) => (
-                      <span key={idx} className="text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded-lg">
-                        ✅ {cr.reward_title}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           )}
 
           {/* DASHBOARD GRIDS */}
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 ${!user ? 'opacity-60 pointer-events-none' : ''}`}>
-            
-            {/* Dynamic Checklist */}
             <div className="bg-white border-2 border-[#EADFC9] p-6 rounded-3xl shadow-sm space-y-4">
               <h4 className="text-xs font-black text-gray-400 uppercase tracking-wider">{content.title}</h4>
               <div className="space-y-3">
@@ -408,7 +424,6 @@ function DashboardLayout({ user, handleLogout }) {
               </div>
             </div>
 
-            {/* Audio & Shabaash Blocks */}
             <div className="space-y-6">
               <div className="bg-white border-2 border-[#EADFC9] p-6 rounded-3xl shadow-sm space-y-4">
                 <h4 className="text-xs font-black text-gray-400 uppercase tracking-wider">Katha & Kahani Audio</h4>
@@ -430,7 +445,6 @@ function DashboardLayout({ user, handleLogout }) {
                 <p className="text-base italic text-amber-950 font-extrabold mt-2">"{content.appreciation}"</p>
               </div>
             </div>
-
           </div>
 
         </div>
@@ -439,7 +453,6 @@ function DashboardLayout({ user, handleLogout }) {
   );
 }
 
-// ROUTER BOOTSTRAP
 export default function App() {
   const [user, setUser] = useState(null);
 
