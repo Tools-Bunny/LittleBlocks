@@ -45,13 +45,21 @@ function DashboardLayout({ user, handleLogout }) {
   // TASKS & REWARDS STATE
   const [tasks, setTasks] = useState([]);
   const verifyTask = async (taskId) => {
+    if (!user) return;
+    
+    // taskId ko hum clean kar rahe hain (agar string hai toh number mein convert)
+    const cleanId = String(taskId).replace('task', ''); 
+    
     const { error } = await supabase
       .from('tasks_progress')
       .update({ status: 'verified' })
       .eq('user_id', user.id)
-      .eq('task_num', taskId);
+      .eq('task_num', parseInt(cleanId));
 
-    if (!error) {
+    if (error) {
+      console.error("Supabase Error:", error);
+      alert("Error: " + error.message);
+    } else {
       alert("Task Verified & Stars Awarded! 🎉");
       window.location.reload(); 
     }
