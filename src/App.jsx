@@ -4,11 +4,11 @@ import { supabase } from './supabaseClient';
 
 // ALL REGIONAL INDIAN LANGUAGES DATA
 const languagesDatabase = {
-  English: { label: "🌐 English", title: "🎯 My Daily Badges", task1: "🌞 Rise & Shine (Brush)", task2: "📚 Brain Power (Homework)", task3: "🥛 Strong Bones (Milk time)", story: "🦊 The Clever Fox", appreciation: "Superstar performance today! 🏆" },
-  Hindi: { label: "🇮🇳 हिन्दी (Hindi)", title: "🎯 मेरे रोज़ के बैज", task1: "🌞 सुबह उठो aur brush karo", task2: "📚 दिमागी कसरत (होमवर्क)", task3: "🥛 मजबूत हड्डियां (दूध का समय)", story: "🦊 चतुर लोमड़ी की कहानी", appreciation: "आज आप सुपरस्टार बन गए! 🏆" },
-  Vajjika: { label: "🇮🇳 बज्जिका (Vajjika)", title: "🎯 हम्मर रोज़ क बैज", task1: "🌞 सवेरे उठू आ मंजन करू", task2: "📚 दिमाग क कसरत (होमवर्क)", task3: "🥛 ताकतवर देह (दूध पीउ)", story: "🦊 चतुर सियार क कहानी", appreciation: "आज तूं कमाल क देलऽ, बाबू! 🏆" },
-  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलक काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "🦊 चतुर लोमड़ीक कथा", appreciation: "बड्ड सुंदर काज कएलह, बौआ! 🏆" },
-  Bengali: { label: "🇮🇳 বাংলা (Bengali)", title: "🎯 আমার দৈনিক ব্যাজ", task1: "🌞 সকালের ম্যাজিক (ব্রাশ)", task2: "📚 মগজ ধোলাই (হোমওয়ার্ক)", task3: "🥛 শক্তিশালী হাড় (দুধের সময়)", story: "🦊 চতুর শেয়ালের গল্প", appreciation: "আজ তুমি সত্যিকারের সুপারস্টার! 🏆" }
+  English: { label: "🌐 English", title: "🎯 My Daily Badges", task1: "🌞 Rise & Shine (Brush)", task2: "📚 Brain Power (Homework)", task3: "🥛 Strong Bones (Milk time)", story: "The Clever Fox. Once upon a time, a clever fox saw a crow with a piece of cheese. The fox praised the crow's voice, and when the crow opened its beak to sing, the cheese fell down, and the fox happily ate it.", appreciation: "Superstar performance today! 🏆", langCode: 'en-US' },
+  Hindi: { label: "🇮🇳 हिन्दी (Hindi)", title: "🎯 मेरे रोज़ के बैज", task1: "🌞 सुबह उठो aur brush karo", task2: "📚 दिमागी कसरत (होमवर्क)", task3: "🥛 मजबूत हड्डियां (दूध का समय)", story: "चतुर लोमड़ी की कहानी। एक बार एक लोमड़ी ने कौवे के पास पनीर देखा। उसने कौवे की मीठी आवाज़ की तारीफ की। जैसे ही कौवे ने गाने के लिए चोंच खोली, पनीर नीचे गिर गया और लोमड़ी उसे लेकर भाग गई।", appreciation: "आज आप सुपरस्टार बन गए! 🏆", langCode: 'hi-IN' },
+  Vajjika: { label: "🇮🇳 बज्जिका (Vajjika)", title: "🎯 हम्मर रोज़ क बैज", task1: "🌞 सवेरे उठू आ मंजन करू", task2: "📚 दिमाग क कसरत (होमवर्क)", task3: "🥛 ताकतवर देह (दूध पीउ)", story: "चतुर सियार क कहानी। एक बेर एक सियार कौआ के पास पनीर देखलक। ऊ कौआ के बोली के बड़ाई करलक। जैसे ही कौआ गावे लेल चोंच खोललक, पनीर नीचे गिर गेल आ सियार ओकरा लेके भाग गेल।", appreciation: "आज तूं कमाल क देलऽ, बाबू! 🏆", langCode: 'hi-IN' },
+  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलक काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा लोमड़ी कौआक पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कएलक। जेना ही कौआ गाबय लेल चोंच खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओकरा ल क भागि गेल।", appreciation: "बड्ड सुंदर काज कएलह, बौआ! 🏆", langCode: 'hi-IN' },
+  Bengali: { label: "🇮🇳 বাংলা (Bengali)", title: "🎯 আমার দৈনিক ব্যাজ", task1: "🌞 সকালের ম্যাজিক (ব্রাশ)", task2: "📚 মগজ ধোলাই (হোমওয়ার্ক)", task3: "🥛 শক্তিশালী হাড় (দুধের সময়)", story: "চতুর শেয়ালের গল্প। এক সময় এক চতুর শেয়াল একটা কাকের মুখে পনিরের টুকরো দেখল। শেয়ালটি কাকের গানের গলার প্রশংসা করল। কাকটি গান গাওয়ার জন্য মুখ খুলতেই পনিরটি নিচে পড়ে গেল এবং শেয়ালটি তা খেয়ে নিল।", appreciation: "আজ তুমি সত্যিকারের সুপারস্টার! 🏆", langCode: 'bn-IN' }
 };
 
 function DashboardLayout({ user, handleLogout }) {
@@ -16,6 +16,7 @@ function DashboardLayout({ user, handleLogout }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const content = languagesDatabase[selectedLang] || languagesDatabase['English'];
 
   const [tasks, setTasks] = useState([
@@ -24,7 +25,35 @@ function DashboardLayout({ user, handleLogout }) {
     { id: 3, textKey: 'task3', done: false, color: 'bg-emerald-100 border-emerald-300' }
   ]);
 
-  // 1. DATABASE SE PURANA SAVED DATA FETCH KARNA
+  // AUDIO PLAYBACK MANAGEMENT FUNCTION
+  const handleAudioPlayback = () => {
+    if (isPlaying) {
+      window.speechSynthesis.cancel();
+      setIsPlaying(false);
+    } else {
+      const utterance = new SpeechSynthesisUtterance(content.story);
+      utterance.lang = content.langCode;
+      
+      utterance.onend = () => {
+        setIsPlaying(false);
+      };
+      
+      utterance.onerror = () => {
+        setIsPlaying(false);
+      };
+
+      setIsPlaying(true);
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
+  // Stop audio if user changes language mid-way
+  useEffect(() => {
+    window.speechSynthesis.cancel();
+    setIsPlaying(false);
+  }, [selectedLang]);
+
+  // DATABASE FETCH
   useEffect(() => {
     if (user) {
       const fetchUserTasks = async () => {
@@ -46,16 +75,13 @@ function DashboardLayout({ user, handleLogout }) {
     }
   }, [user]);
 
-  // 2. CLICK KARNE PAR REAL-TIME DATABASE ME SAVE/UPSERT KARNA
+  // DATABASE UPSERT
   const toggleTask = async (taskId, currentStatus) => {
     if (!user) return;
 
     const newStatus = !currentStatus;
-    
-    // Local UI update first for speed
     setTasks(prev => prev.map(t => t.id === taskId ? { ...t, done: newStatus } : t));
 
-    // Upsert payload to Supabase Database table
     const { error } = await supabase
       .from('tasks_progress')
       .upsert(
@@ -65,7 +91,6 @@ function DashboardLayout({ user, handleLogout }) {
 
     if (error) {
       console.error("Database sync failed:", error.message);
-      // Rollback on failure
       setTasks(prev => prev.map(t => t.id === taskId ? { ...t, done: currentStatus } : t));
     }
   };
@@ -208,15 +233,24 @@ function DashboardLayout({ user, handleLogout }) {
             <div className="space-y-6">
               <div className="bg-white border-2 border-[#EADFC9] p-6 rounded-3xl shadow-sm space-y-4">
                 <h4 className="text-xs font-black text-gray-400 uppercase tracking-wider">Katha & Kahani Audio</h4>
-                <div className="border-2 border-red-200 rounded-2xl p-4 bg-rose-50/50 flex items-center justify-between">
+                <div 
+                  onClick={handleAudioPlayback}
+                  className="border-2 border-red-200 rounded-2xl p-4 bg-rose-50/50 flex items-center justify-between cursor-pointer hover:bg-rose-100 transition-all"
+                >
                   <div className="flex items-center space-x-4">
-                    <div className="w-10 h-10 bg-[#FF6B6B] text-white flex items-center justify-center rounded-xl text-sm font-bold">▶️</div>
+                    <div className={`w-10 h-10 ${isPlaying ? 'bg-emerald-500' : 'bg-[#FF6B6B]'} text-white flex items-center justify-center rounded-xl text-sm font-bold`}>
+                      {isPlaying ? '⏸️' : '▶️'}
+                    </div>
                     <div>
-                      <h4 className="text-sm font-extrabold text-gray-800">{content.story}</h4>
-                      <p className="text-[11px] font-bold text-[#FF6B6B]">Audio Playback • Click to listen</p>
+                      <h4 className="text-sm font-extrabold text-gray-800 truncate max-w-[180px]">
+                        {selectedLang === 'English' ? '🦊 The Clever Fox' : selectedLang === 'Bengali' ? '🦊 চতুর শেয়াল' : '🦊 चतुर लोमड़ी'}
+                      </h4>
+                      <p className="text-[11px] font-bold text-[#FF6B6B]">
+                        {isPlaying ? 'Speaking now... Click to stop' : 'Audio Playback • Click to listen'}
+                      </p>
                     </div>
                   </div>
-                  <span className="text-[10px] font-black bg-amber-400 text-amber-950 px-2 py-0.5 rounded-md shadow-sm">FREE</span>
+                  <span className="text-[10px] font-black bg-amber-400 text-amber-950 px-2 py-0.5 rounded-md shadow-sm">LIVE</span>
                 </div>
               </div>
 
@@ -234,7 +268,6 @@ function DashboardLayout({ user, handleLogout }) {
   );
 }
 
-// ROOT APPLICATION ROUTER BLOCK
 export default function App() {
   const [user, setUser] = useState(null);
 
@@ -249,6 +282,7 @@ export default function App() {
   }, []);
 
   const handleLogout = async () => {
+    window.speechSynthesis.cancel();
     await supabase.auth.signOut();
     setUser(null);
   };
