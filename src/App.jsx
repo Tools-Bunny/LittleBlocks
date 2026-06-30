@@ -6,8 +6,8 @@ import { supabase } from './supabaseClient';
 const languagesDatabase = {
   English: { label: "🌐 English", title: "🎯 My Daily Badges", task1: "🌞 Rise & Shine (Brush)", task2: "📚 Brain Power (Homework)", task3: "🥛 Strong Bones (Milk time)", story: "The Clever Fox. Once upon a time, a clever fox saw a crow with a piece of cheese. The fox praised the crow's voice, and when the crow opened its beak to sing, the cheese fell down, and the fox happily ate it.", appreciation: "Superstar performance today! 🏆", langCode: 'en-US' },
   Hindi: { label: "🇮🇳 हिन्दी (Hindi)", title: "🎯 मेरे रोज़ के बैज", task1: "🌞 सुबह उठो aur brush karo", task2: "📚 दिमागी कसरत (होमवर्क)", task3: "🥛 मजबूत हड्डियां (दूध का समय)", story: "चतुर लोमड़ी की कहानी। एक बार एक लोमड़ी ने कौवे के पास पनीर देखा। उसने कौवे की मीठी आवाज़ की तारीफ की। जैसे ही कौवे ने गाने के लिए चोंच खोली, पनीर नीचे गिर गया और लोमड़ी उसे लेकर भाग गई।", appreciation: "आज आप सुपरस्टार बन गए! 🏆", langCode: 'hi-IN' },
-  Vajjika: { label: "🇮🇳 बज्जিকা (Vajjika)", title: "🎯 हम्मर रोज़ क बैज", task1: "🌞 सवेरे उठू आ मंजन करू", task2: "📚 दिमाग क कसरत (होमवर्क)", task3: "🥛 ताकतवर देह (दूध पीउ)", story: "चतुर सियार क कहानी। एक बेर एक सियार कौआ के पास पनीर देखलक। ऊ कौआ के बोली के बड़ाई करलक। जैसे ही कौआ गावे लेल चोंच खोललक, पनीर नीचे गिर गेल आ सियार ओकरा लेके भाग गेल।", appreciation: "आज तूं कमाल क देलऽ, बाबू! 🏆", langCode: 'hi-IN' },
-  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलक काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा lowmri कौआक पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कएलक। जेना ही कौआ गाबay लेल चोंच खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओकरा ल क भागি गेल।", appreciation: "बड्ड सुंदर काज कएलह, बौआ! 🏆", langCode: 'hi-IN' },
+  Vajjika: { label: "🇮🇳 बज्जिका (Vajjika)", title: "🎯 हम्मर रोज़ क बैज", task1: "🌞 सवेरे उठू आ मंजन करू", task2: "📚 दिमाग क कसरत (होमवर्क)", task3: "🥛 ताकतवर देह (दूध पीउ)", story: "चतुर सियार क कहानी। एक बेर एक सियार कौआ के पास पनीर देखलक। ऊ कौआ के बोली के बड़ाई करलक। जैसे ही कौआ गावे लेल चोंच खोललक, पनीर नीचे गिर गेल आ सियार ओकरा लेके भाग गेल।", appreciation: "आज तूं कमाल क देलऽ, बाबू! 🏆", langCode: 'hi-IN' },
+  Maithili: { label: "🇮🇳 मैथिली (Maithili)", title: "🎯 हमर दैनिक बैज", task1: "🌞 भोर में उठू आ ब्रश करू", task2: "📚 स्कूलक काज (होमवर्क)", task3: "🥛 पोषण (दूध पीबाक समय)", story: "चतुर लोमड़ीक कथा। एक बेर एकटा लोमड़ी कौआक पास पनीर देखलक। ऊ कौआक सुंदर आवाज़क प्रशंसा कएलक। जेना ही कौआ गाबay लेल चोंच खोललक, पनीर नीचा खसि पड़ल आ लोमड़ी ओकरा ल क भागि गेल।", appreciation: "बड्ड सुंदर काज कएलह, बौआ! 🏆", langCode: 'hi-IN' },
   Bengali: { label: "🇮🇳 বাংলা (Bengali)", title: "🎯 আমার দৈনিক ব্যাজ", task1: "🌞 সকালের ম্যাজিক (ব্রাশ)", task2: "📚 মগজ ধোলাই (হোমওয়ার্ক)", task3: "🥛 শক্তিশালী হাড় (দুধের সময়)", story: "চতুর শেয়ালের গল্প। এক সময় এক চতুর শেয়াল একটা কাকের মুখে পনিরের টুকরো দেখল। শেয়ালটি কাকের গানের গলার প্রশংসা করল। কাকটি গান গাওয়ার জন্য মুখ খুলতেই পনিরটি নিচে পড়ে গেল এবং শেয়ালটি তা খেয়ে নিল।", appreciation: "আজ তুমি সত্যিকারের সুপারস্টার! 🏆", langCode: 'bn-IN' }
 };
 
@@ -44,7 +44,7 @@ function DashboardLayout({ user, handleLogout }) {
   const [claimedRewards, setClaimedRewards] = useState([]);
 
   // STREAK STATE
-  const [kidStreak, setKidStreak] = useState(3); // Default UI fallback mock score
+  const [kidStreak, setKidStreak] = useState(3);
 
   // PROGRESS & STARS BALANCE CALCULATIONS
   const completedCount = tasks.filter(t => t.done).length;
@@ -53,6 +53,68 @@ function DashboardLayout({ user, handleLogout }) {
   const totalStarsEarned = completedCount;
   const totalStarsSpent = claimedRewards.reduce((acc, r) => acc + r.stars_spent, 0);
   const availableStars = Math.max(0, totalStarsEarned - totalStarsSpent);
+
+  // DYNAMIC REPORT DOWNLOAD / PRINT HANDLER
+  const handleDownloadReport = () => {
+    const printWindow = window.open('', '_blank');
+    const currentDate = new Date().toLocaleDateString('en-IN', { dateStyle: 'long' });
+    
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>${activeKid} Progress Report - LittleBlocks</title>
+          <style>
+            body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; color: #333; background: #fff; }
+            .header { text-align: center; border-b: 4px solid #FF6B6B; padding-bottom: 20px; margin-bottom: 30px; }
+            .title { color: #FF6B6B; margin: 0; font-size: 28px; font-weight: 800; }
+            .subtitle { color: #666; font-size: 14px; margin-top: 5px; }
+            .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px; }
+            .card { background: #F7F4EB; border: 2px solid #EADFC9; padding: 15px; rounded: 12px; text-align: center; font-weight: bold; }
+            .card span { block: block; font-size: 20px; color: #37352f; margin-top: 5px; }
+            .section-title { font-size: 18px; font-weight: bold; border-bottom: 2px solid #EADFC9; padding-bottom: 5px; margin-bottom: 15px; color: #37352f; }
+            .task-item { padding: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; font-size: 14px; }
+            .status-done { color: #10B981; font-weight: bold; }
+            .status-pending { color: #EF4444; font-weight: bold; }
+            .footer { text-align: center; font-size: 12px; color: #aaa; margin-top: 5px; border-top: 1px dashed #ccc; padding-top: 15px; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h1 class="title">🧱 LittleBlocks Progress Report</h1>
+            <div class="subtitle">Generated on ${currentDate}</div>
+          </div>
+          <div class="meta-grid">
+            <div class="card">Kid Name: <span>${activeKid}</span></div>
+            <div class="card">Current Streak: <span>🔥 ${kidStreak} Days</span></div>
+            <div class="card">Completion Rate: <span>🎯 ${progressPercentage}%</span></div>
+          </div>
+          <div class="section-title">📅 Today's Routine Badges Checklist</div>
+          <div>
+            ${tasks.map(t => `
+              <div class="task-item">
+                <span>${t.text}</span>
+                <span class="${t.done ? 'status-done' : 'status-pending'}">${t.done ? '🌟 Completed' : '⏳ Pending'}</span>
+              </div>
+            `).join('')}
+          </div>
+          <div class="section-title" style="margin-top: 30px;">🎟️ Claimed Rewards Track</div>
+          <div>
+            ${claimedRewards.length > 0 
+              ? claimedRewards.map(cr => `<div class="task-item"><span>✅ ${cr.reward_title}</span><span style="color:#6366F1">Claimed</span></div>`).join('')
+              : '<p style="font-size:13px; color:#888; font-style:italic;">No rewards claimed yet today.</p>'
+            }
+          </div>
+          <div class="footer">
+            LittleBlocks Smart Kids Tracking Platform • All Regional Indian Languages Synced Workspace
+          </div>
+          <script>
+            window.onload = function() { window.print(); window.close(); }
+          </script>
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
+  };
 
   // AUDIO SPEECH LOGIC
   const handleAudioPlayback = () => {
@@ -74,11 +136,10 @@ function DashboardLayout({ user, handleLogout }) {
     setIsPlaying(false);
   }, [selectedLang]);
 
-  // COMBINED ENGINE: FETCH TASKS, PROGRESS, REWARDS AND STREAKS
+  // DATABASE FETCH
   useEffect(() => {
     if (user) {
       const loadDashboardData = async () => {
-        // 1. Fetch custom routine tasks
         const { data: customTasksData } = await supabase
           .from('parent_custom_tasks')
           .select('id, task_text, color_class')
@@ -97,7 +158,6 @@ function DashboardLayout({ user, handleLogout }) {
           });
         }
 
-        // 2. Fetch completed milestones
         const { data: progressData } = await supabase
           .from('tasks_progress')
           .select('task_num, done')
@@ -112,7 +172,6 @@ function DashboardLayout({ user, handleLogout }) {
         }
         setTasks(baseTasks);
 
-        // 3. Fetch claimed rewards ledger
         const { data: rewardsData } = await supabase
           .from('kids_rewards_claims')
           .select('id, reward_title, stars_spent')
@@ -122,7 +181,6 @@ function DashboardLayout({ user, handleLogout }) {
         if (rewardsData) setClaimedRewards(rewardsData);
         else setClaimedRewards([]);
 
-        // 4. Fetch kids streak analytics
         const { data: streakData } = await supabase
           .from('kids_streaks')
           .select('current_streak')
@@ -184,7 +242,7 @@ function DashboardLayout({ user, handleLogout }) {
     }
   };
 
-  // TOGGLE STATUS METRICS ENGINE WITH AUTOMATIC STREAK SCALE INCREMENT UPON 100% COMPLETION
+  // TOGGLE STATUS METRICS ENGINE
   const toggleTask = async (taskId, currentStatus) => {
     if (!user) return;
 
@@ -274,7 +332,7 @@ function DashboardLayout({ user, handleLogout }) {
             </div>
           )}
 
-          {/* WEEKLY LEADERBOARD BOARD (Displays relative progress ranking dynamically) */}
+          {/* WEEKLY LEADERBOARD */}
           {user && (
             <div className="mt-4 p-3 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border-2 border-amber-200 shadow-sm">
               <span className="text-[10px] uppercase font-black text-amber-700 block mb-1.5 px-1">🏆 Kid's Leaderboard</span>
@@ -331,7 +389,6 @@ function DashboardLayout({ user, handleLogout }) {
               <h2 className="text-2xl font-black mt-1">Make learning fun in your own language!</h2>
             </div>
             
-            {/* STREAK & WALLET COMPLEX INTEGRATION */}
             <div className="flex items-center space-x-2 relative z-10">
               <div className="bg-white/95 px-3 py-1.5 rounded-xl border-2 border-[#EADFC9] text-center shadow-sm">
                 <span className="text-[9px] font-black text-orange-600 uppercase block">🔥 Streak</span>
@@ -359,13 +416,20 @@ function DashboardLayout({ user, handleLogout }) {
             </div>
           )}
 
-          {/* PROGRESS */}
+          {/* PROGRESS ANALYTICS AND DOWNLOAD HUB */}
           <div className={`mb-6 p-5 bg-white border-2 border-[#EADFC9] rounded-3xl shadow-sm ${!user ? 'opacity-40 pointer-events-none' : ''}`}>
             <div className="flex items-center justify-between mb-2">
               <h4 className="text-xs font-black uppercase text-gray-500 tracking-wider">📈 {activeKid}'s Progress Analytics</h4>
-              <span className="text-xs font-extrabold bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-md">
-                {completedCount} of {tasks.length} Badges Earned
-              </span>
+              
+              {/* DOWNLOAD REPORT TRIGGER BUTTON */}
+              {user && (
+                <button 
+                  onClick={handleDownloadReport}
+                  className="text-[11px] font-black bg-indigo-50 text-indigo-600 border border-indigo-200 px-3 py-1 rounded-xl shadow-sm hover:bg-indigo-100 transition"
+                >
+                  📥 Download Report Card
+                </button>
+              )}
             </div>
             <div className="w-full bg-gray-100 rounded-full h-3.5 border overflow-hidden">
               <div className="bg-gradient-to-r from-[#FFD166] to-[#4ECDC4] h-full transition-all duration-500" style={{ width: `${progressPercentage}%` }}></div>
@@ -432,7 +496,7 @@ function DashboardLayout({ user, handleLogout }) {
                     <div className={`w-10 h-10 ${isPlaying ? 'bg-emerald-500' : 'bg-[#FF6B6B]'} text-white flex items-center justify-center rounded-xl text-sm font-bold`}>{isPlaying ? '⏸️' : '▶️'}</div>
                     <div>
                       <h4 className="text-sm font-extrabold text-gray-800 truncate max-w-[180px]">
-                        {selectedLang === 'English' ? '🦊 The Clever Fox' : selectedLang === 'Bengali' ? '🦊 চতুর শেয়াল' : '🦊 चतुर लोमड़ी'}
+                        {selectedLang === 'English' ? '🦊 The Clever Fox' : selectedLang === 'Bengali' ? '🦊 চতুর শেয়াল' : '🦊 চতুর लोमड़ी'}
                       </h4>
                       <p className="text-[11px] font-bold text-[#FF6B6B]">{isPlaying ? 'Speaking now...' : 'Audio Playback • Click to listen'}</p>
                     </div>
